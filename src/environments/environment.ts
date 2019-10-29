@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyBQMok4ve-a-pjPLqW6-9mFEPeVuU40rOU",
+    authDomain: "aula-social.firebaseapp.com",
+    databaseURL: "https://aula-social.firebaseio.com",
+    projectId: "aula-social",
+    storageBucket: "aula-social.appspot.com",
+    messagingSenderId: "377734350824",
+    appId: "1:377734350824:web:9dea19a43268f79868c65d",
+    measurementId: "G-JXC4L0EC6F"
+  }
 };
 
 /*

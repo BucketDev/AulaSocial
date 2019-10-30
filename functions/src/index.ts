@@ -5,6 +5,9 @@ admin.initializeApp();
 
 exports.addAdminRole = functions.https.onCall((data, context) => {
   // get user and add custom claim (admin)
+  if ( context.auth!.token.admin !== true ) {
+    return { err: 'Permission denied!' }
+  }
   return admin.auth().getUserByEmail(data.email).then(user => {
     return admin.auth().setCustomUserClaims(user.uid, { admin: true });
   }).then(() => {
@@ -16,6 +19,9 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 
 exports.addProfessorRole = functions.https.onCall((data, context) => {
   // get user and add custom claim (professor)
+  if ( context.auth!.token.admin !== true ) {
+    return { err: 'Permission denied!' }
+  }
   return admin.auth().getUserByEmail(data.email).then(user => {
     return admin.auth().setCustomUserClaims(user.uid, { professor: true });
   }).then(() => {
@@ -27,6 +33,9 @@ exports.addProfessorRole = functions.https.onCall((data, context) => {
 
 exports.removeProfessorRole = functions.https.onCall((data, context) => {
   // get user and remove custom claim (professor)
+  if ( context.auth!.token.admin !== true ) {
+    return { err: 'Permission denied!' }
+  }
   return admin.auth().getUserByEmail(data.email).then(user => {
     return admin.auth().setCustomUserClaims(user.uid, { professor: false });
   }).then(() => {

@@ -44,3 +44,11 @@ exports.removeProfessorRole = functions.https.onCall((data, context) => {
     }
   }).catch(err => err);
 });
+
+exports.createUser = functions.auth.user().onCreate((userRecord, context) => {
+  return admin.database().ref(`/users/${userRecord.uid}`).set({
+    displayName: userRecord.displayName,
+    email: userRecord.email,
+    photoURL: userRecord.photoURL
+  });
+});

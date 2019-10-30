@@ -46,9 +46,10 @@ export class AdminComponent {
     const addProfessorRole = this.functions.httpsCallable('addProfessorRole');
     addProfessorRole({ email: user.email }).subscribe(data => {
       this.loading = false;
-      this.snackBar.open(`${user.displayName} ahora es profesor`, 'Entendido!', {
-        duration: 3000
-      })
+      if(!data.err)
+        this.snackBar.open(`${user.displayName} ahora es profesor`, 'Entendido!', {
+          duration: 3000
+        })
     }, err => console.error(err));
   }
 
@@ -56,11 +57,11 @@ export class AdminComponent {
     this.loading = true;
     const removeProfessorRole = this.functions.httpsCallable('removeProfessorRole');
     removeProfessorRole({ email: user.email }).subscribe(data => {
-      
       this.loading = false;
-      this.snackBar.open(`${user.displayName} ahora es estudiante`, 'Entendido!', {
-        duration: 3000
-      })
+      if(!data.err)
+        this.snackBar.open(`${user.displayName} ahora es estudiante`, 'Entendido!', {
+          duration: 3000
+        })
     }, err => console.error(err));
   }
 

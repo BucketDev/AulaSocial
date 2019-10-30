@@ -5,7 +5,7 @@
       <span class="aula-social-font">Aula Social</span>
     </button>
     <div class="d-none d-md-block flex-grow-1">
-      <button mat-button class="mx-2" [routerLink]="['/admin']">Administrar</button>
+      <button mat-button class="mx-2" [routerLink]="['/admin']" *ngIf="fireAuth.user.admin">Administrar</button>
     </div>
     <app-profile-photo size="small" [photoURL]="fireAuth.user.photoURL"></app-profile-photo>
     <div class="d-flex flex-column align-items-start mx-2 toolbar-info-small">
@@ -19,6 +19,6 @@
     <button mat-raised-button (click)="logOut()" color="warn">Salir</button>
   </mat-toolbar-row>
   <mat-toolbar-row class="mat-toolbar-menu-row p-0 d-md-none">
-    <button mat-button class="btn-block" [routerLink]="['/admin']">Administrar</button>
+    <button mat-button class="btn-block" [routerLink]="['/admin']" *ngIf="fireAuth.user.admin">Administrar</button>
   </mat-toolbar-row>
 </mat-toolbar>

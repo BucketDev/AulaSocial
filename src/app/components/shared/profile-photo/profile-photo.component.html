@@ -1,0 +1,9 @@
+<div class="d-flex img-profile-cover rounded mat-elevation-z2"
+    matRipple
+    [ngClass]="{
+      'img-profile-sm': size === 'small',
+      'img-profile-lg': size === 'large',
+      'rounded-circle': circle
+    }"
+    [style.background-image]="photoURL | photo: 192: 'gender-neutral-user' | uriStyleSanitizer ">
+</div>

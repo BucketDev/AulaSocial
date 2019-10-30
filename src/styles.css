@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  background: #dfe4ea !important;
+}
+
 body { margin: 0; }
 
 * {
   font-family: 'Roboto Condensed', sans-serif !important;
 }
 
-.aula-social-font {
-  font-family: 'Graduate', cursive;
+*.aula-social-font {
+  font-family: 'Graduate', cursive !important;
 }
   
 button:focus,

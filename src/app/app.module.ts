@@ -7,10 +7,12 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
+import { SharedModule } from './components/shared/shared.module';
 import { LoginModule } from "./components/login/login.module";
 import { DashboardModule } from './components/dashboard/dashboard.module';
-import { SharedModule } from './components/shared/shared.module';
+import { AdminModule } from './components/admin/admin.module';
 
 import { AppComponent } from './app.component';
 
@@ -28,9 +30,11 @@ import { environment } from 'src/environments/environment';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    AngularFireFunctionsModule,
     SharedModule,
     LoginModule,
-    DashboardModule
+    DashboardModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

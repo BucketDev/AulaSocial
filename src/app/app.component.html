@@ -1,5 +1,7 @@
 <app-loading *ngIf="loading; else notLoading"></app-loading>
 <ng-template #notLoading>
   <app-navbar *ngIf="showNavbar"></app-navbar>
-  <router-outlet></router-outlet>
+  <div class="container-fluid" [ngClass]="{'p-0': !showNavbar}">
+    <router-outlet></router-outlet>
+  </div>
 </ng-template>

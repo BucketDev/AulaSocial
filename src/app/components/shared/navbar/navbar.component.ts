@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 import { FireAuthService } from 'src/app/providers/auth/fire-auth.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { FireAuthService } from 'src/app/providers/auth/fire-auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private fireAuth: FireAuthService) { }
+  constructor(public fireAuth: FireAuthService) { }
 
   ngOnInit() {
   }

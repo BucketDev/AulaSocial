@@ -63,7 +63,9 @@ export class FireAuthService {
 
   googleSignIn = async () => {
     const googleAuth = gapi.auth2.getAuthInstance()
-    const googleUser = await googleAuth.signIn();
+    const googleUser = await googleAuth.signIn({
+      prompt: 'select_account'
+    });
     const token = googleUser.getAuthResponse().id_token;
     const credential = auth.GoogleAuthProvider.credential(token);
     await this.angularFireAuth.auth.signInWithCredential(credential)

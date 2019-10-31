@@ -17,7 +17,6 @@ export class GroupHomeComponent implements OnDestroy {
   originalGroups: Group[];
   groups: Group[];
   groupsSub: Subscription;
-  groupsByTitleSub: Subscription;
   loading: boolean = true;
   title: string;
 
@@ -33,7 +32,7 @@ export class GroupHomeComponent implements OnDestroy {
   }
 
   searchGroups = () => {
-    if (this.title.length > 3) {
+    if (this.title.length > 0) {
       this.groups = this.originalGroups.filter((group: Group) => group.title.toLowerCase().includes(this.title.toLowerCase()))
     } else
       this.groups = [...this.originalGroups];
@@ -42,7 +41,6 @@ export class GroupHomeComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.groupsSub.unsubscribe();
-    this.groupsByTitleSub.unsubscribe();
   }
 
   showGroupModal = () => {
@@ -52,6 +50,10 @@ export class GroupHomeComponent implements OnDestroy {
         duration: 3000
       });
     });
+  }
+
+  viewGroup = (uid: string) => {
+    console.log(uid);
   }
 
 }

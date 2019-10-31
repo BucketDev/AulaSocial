@@ -11,16 +11,21 @@
 </div>
 <app-loading *ngIf="loading; else notLoading"></app-loading>
 <ng-template #notLoading>
-  <div class="card-columns">
-    <mat-card *ngFor="let group of groups" class="d-inline-block w-100 mb-2">
-      <mat-card-header>
-        <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/books/40' | uriStyleSanitizer "></div>
-        <mat-card-title>{{group.title}}</mat-card-title>
-        <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p [innerHTML]="group.description"></p>
-      </mat-card-content>
-    </mat-card>
+  <div class="d-flex flex-wrap">
+    <div class="col-md-4 col-12 d-flex my-2 px-2" *ngFor="let group of groups">
+      <mat-card class="d-flex flex-column flex-fill" (click)="viewGroup(group.uid)" matRipple>
+        <mat-card-header>
+          <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/books/40' | uriStyleSanitizer "></div>
+          <mat-card-title class="text-primary">{{group.title}}</mat-card-title>
+          <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="flex-fill group-content">
+          <p [innerHTML]="group.description"></p>
+        </mat-card-content>
+        <mat-card-footer class="p-2 text-center bg-light">
+          <small>Creado el {{group.creationDate?.seconds * 1000 | date: 'longDate'}}</small>
+        </mat-card-footer>
+      </mat-card>
+    </div>
   </div>
 </ng-template>

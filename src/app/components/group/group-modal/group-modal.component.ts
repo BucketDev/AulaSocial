@@ -29,7 +29,8 @@ export class GroupModalComponent implements OnInit {
 
   saveGroup = () => {
     this.loading = true
-    let description = this.formGroup.value.description.replace(/\r\n|\r|\n/g,"<br>");
+    let description = this.formGroup.value.description;
+    description = description ? description.replace(/\r\n|\r|\n/g,"<br>") : ''; 
     this.groupService.save({...this.formGroup.value, description}).then(() => {
       this.loading = false;
       this.bottomSheetRef.dismiss(this.formGroup.value.title);

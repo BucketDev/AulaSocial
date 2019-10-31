@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -18,6 +18,10 @@ import { GroupModule } from './components/group/group.module';
 import { AppComponent } from './app.component';
 
 import { environment } from 'src/environments/environment';
+import localeMX from "@angular/common/locales/es-MX";
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeMX, 'es-MX');
 
 @NgModule({
   declarations: [
@@ -38,7 +42,9 @@ import { environment } from 'src/environments/environment';
     AdminModule,
     GroupModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es-MX'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

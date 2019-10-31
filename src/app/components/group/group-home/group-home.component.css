@@ -1,0 +1,8 @@
+.mat-card {
+  cursor: pointer;
+}
+
+.group-content {
+  max-height: 120px;
+  overflow: hidden;
+}

@@ -16,7 +16,9 @@ export class GroupService {
   constructor(private db: AngularFirestore,
               private fireAuth: FireAuthService) { }
 
-  save = (group: Group) => this.db.collection(this.collectionName).add({owner: this.fireAuth.user.displayName,  ...group});
+  save = (group: Group) => this.db.collection(this.collectionName).add({
+    owner: this.fireAuth.user.displayName,  ...group, creationDate: new Date()
+  });
 
   findAll = () => this.db.collection(this.collectionName).snapshotChanges().pipe(map((actions: DocumentChangeAction<Group>[]) =>
     actions.map((action: DocumentChangeAction<Group>) => {

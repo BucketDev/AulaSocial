@@ -66,19 +66,7 @@ export class FireAuthService {
     const googleUser = await googleAuth.signIn();
     const token = googleUser.getAuthResponse().id_token;
     const credential = auth.GoogleAuthProvider.credential(token);
-    await this.angularFireAuth.auth.signInWithCredential(credential)
-      .then((userCredential: auth.UserCredential) => { 
-        if (userCredential.additionalUserInfo.isNewUser) {
-          let {uid, displayName, photoURL, email} = userCredential.user;
-          this.userService.save({uid, displayName, email, photoURL})
-            .then(() => {
-              this.session = {uid, displayName, email, photoURL};
-              if (this.router.url.startsWith('/login')) {
-                this.router.navigate(['/dashboard']);
-              }
-          });
-        }
-      });
+    await this.angularFireAuth.auth.signInWithCredential(credential);
   }
 
   signOut = () => {

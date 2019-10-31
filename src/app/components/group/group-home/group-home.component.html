@@ -1,0 +1,26 @@
+<div class="row m-0 my-2">
+  <button mat-raised-button color="primary" (click)="showGroupModal()" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
+    <img src="https://png.icons8.com/color/add-user-group-woman-man/24" alt="admin"> Crear grupo
+  </button>
+</div>
+<div class="d-flex justify-content-center">
+  <mat-form-field appearance="fill">
+    <mat-label>Buscar</mat-label>
+    <input matInput placeholder="Ingresa el nombre del grupo" [(ngModel)]="title" (keyup)="searchGroups()">
+  </mat-form-field>
+</div>
+<app-loading *ngIf="loading; else notLoading"></app-loading>
+<ng-template #notLoading>
+  <div class="card-columns">
+    <mat-card *ngFor="let group of groups" class="d-inline-block w-100 mb-2">
+      <mat-card-header>
+        <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/books/40' | uriStyleSanitizer "></div>
+        <mat-card-title>{{group.title}}</mat-card-title>
+        <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p [innerHTML]="group.description"></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

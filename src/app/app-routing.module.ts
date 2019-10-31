@@ -7,6 +7,9 @@ import { AdminGuardService } from './providers/auth/admin-guard.service';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { GroupHomeComponent } from './components/group/group-home/group-home.component';
+
+import { GROUP_ROUTES } from "./components/group/group.routes";
 
 
 const routes: Routes = [
@@ -14,6 +17,7 @@ const routes: Routes = [
   { path: '', canActivate: [AuthGuardService], children: [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AdminGuardService]},
+    { path: 'group', children: GROUP_ROUTES },
     { path: '**', redirectTo: 'dashboard' }
   ]}
 ];

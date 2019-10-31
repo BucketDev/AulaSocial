@@ -13,6 +13,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { LoginModule } from "./components/login/login.module";
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { AdminModule } from './components/admin/admin.module';
+import { GroupModule } from './components/group/group.module';
 
 import { AppComponent } from './app.component';
 
@@ -34,7 +35,8 @@ import { environment } from 'src/environments/environment';
     SharedModule,
     LoginModule,
     DashboardModule,
-    AdminModule
+    AdminModule,
+    GroupModule
   ],
   providers: [],
   bootstrap: [AppComponent]

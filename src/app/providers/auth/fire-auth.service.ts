@@ -66,7 +66,7 @@ export class FireAuthService {
     const googleUser = await googleAuth.signIn();
     const token = googleUser.getAuthResponse().id_token;
     const credential = auth.GoogleAuthProvider.credential(token);
-    await this.angularFireAuth.auth.signInWithCredential(credential);
+    await this.angularFireAuth.auth.signInWithCredential(credential)
   }
 
   signOut = () => {

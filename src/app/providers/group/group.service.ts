@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentChangeAction, DocumentSnapshot } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 
 import { FireAuthService } from '../auth/fire-auth.service';
@@ -18,7 +18,7 @@ export class GroupService {
               private fireAuth: FireAuthService) { }
 
   save = (group: Group) => this.db.collection(this.collectionName).add({
-    owner: this.fireAuth.user.displayName,  ...group, creationDate: new Date()
+    owner: this.fireAuth.user.displayName, photoURL: this.fireAuth.user.photoURL,  ...group, creationDate: new Date()
   });
 
   findAll = () => this.db.collection(this.collectionName).snapshotChanges().pipe(map((actions: DocumentChangeAction<Group>[]) =>
@@ -28,4 +28,10 @@ export class GroupService {
       return { uid, ...group };
     })
   ))
+
+  findByGroupId = (groupId: string) => this.db.collection(this.collectionName).doc(groupId).get()
+    .pipe(map((snapshot: DocumentSnapshot<Group>) => {
+      return {...snapshot.data()}
+  }))
+
 }

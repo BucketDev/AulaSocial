@@ -1,5 +1,39 @@
-<div class="row m-0 flex-wrap my-2">
-  <div class="col-12 col-md-6" *ngIf="groupService.groupId">
+<app-loading *ngIf="loading"></app-loading>
+<div class="row m-0 flex-wrap" *ngIf="!loading">
+  <div class="col-12 col-lg-4 my-2">
+    <mat-card>
+      <mat-card-header>
+        <app-profile-photo mat-card-avatar [circle]="true" class="mr-3" [photoURL]="group.photoURL"></app-profile-photo>
+        <mat-card-title>{{group.title}}</mat-card-title>
+        <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{group.description}}</p>
+        <button mat-raised-button color="primary" *ngIf="!hasJoined" (click)="addStudent()">Unirse al grupo</button>
+        <button mat-raised-button color="warn" *ngIf="hasJoined" (click)="removeStudent()">Salir del grupo</button>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="my-2" *ngIf="hasJoined">
+      <mat-card-header>
+        <mat-card-title>Estudiantes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngIf="students.length === 0">
+            <span class="h4 m-0">No hay estudiantes en este curso</span>
+          </mat-list-item>
+          <mat-list-item *ngFor="let student of students">
+            <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
+            <div class="d-flex flex-column mx-2">
+              <span>{{student.email}}</span>
+              <small>{{student.joinedAt?.seconds * 1000 | date: 'longDate'}}</small>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-12 col-lg-8" *ngIf="hasJoined">
       <app-group-homework></app-group-homework>
   </div>
 </div>

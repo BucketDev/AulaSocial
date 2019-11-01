@@ -2,7 +2,8 @@
   <div class="d-flex">
     <input type="file" style="display: none" #fileInput (change)="fileSelected(fileInput)">
     <mat-form-field appearance="outline" class="flex-fill">
-      <input matInput type="text" [(ngModel)]="upload.name" required name="name" #name="ngModel" readonly>
+      <mat-label>Sube tu tarea</mat-label>
+      <input matInput type="text" [(ngModel)]="upload.name" name="name" #name="ngModel" readonly>
     </mat-form-field>
     <button mat-stroked-button *ngIf="!upload?.file" type="button" (click)="fileInput.click()">
       <img src="https://png.icons8.com/color/search/32" alt="search">

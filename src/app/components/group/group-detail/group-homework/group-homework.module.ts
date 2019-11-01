@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatListModule } from '@angular/material/list';
 
 import { SharedPipeModule } from 'src/app/pipes/shared-pipe.module';
 import { AngularMaterialModule } from 'src/app/components/material/angular-material.module';
@@ -19,8 +18,7 @@ import { HomeworkDetailModalComponent } from './homework-detail-modal/homework-d
     ReactiveFormsModule,
     SharedPipeModule,
     AngularMaterialModule,
-    SharedModule,
-    MatListModule
+    SharedModule
   ],
   declarations: [
     GroupHomeworkComponent,

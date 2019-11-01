@@ -17,6 +17,10 @@ service cloud.firestore {
           allow delete: if request.auth.token.admin;
         }
       }
+      match /students/{studentId} {
+        allow read, create: if request.auth.uid != null;
+        allow delete: if request.auth.token.admin || request.auth.token.professor;
+      }
     }
   }
 }

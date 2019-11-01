@@ -1,20 +1,20 @@
-<mat-card class="bg-warning" *ngIf="groupService.groupId">
-  <mat-card-header>
+<mat-card class="p-0 my-2" *ngIf="groupService.groupId">
+  <mat-card-header class="bg-warning p-2">
     <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/spiral-bound-booklet/40' | uriStyleSanitizer "></div>
     <mat-card-title>Tareas</mat-card-title>
     <mat-card-subtitle>Almacena tus tareas</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content class="bg-white">
+  <mat-card-content>
     <app-loading *ngIf="loading"></app-loading>
     <mat-list *ngIf="!loading">
       <mat-list-item *ngIf="homeworks.length === 0">
         <span class="h4 m-0" mat-line>No hay tareas por mostrar</span>
       </mat-list-item>
-      <mat-list-item *ngFor="let homework of homeworks">
+      <mat-list-item class="my-1" *ngFor="let homework of homeworks">
         <div class="d-flex align-items-center flex-fill">
           <div class="d-flex flex-column flex-fill" matRipple (click)="showHomework(homework)">
             <span>{{homework.title}}</span>
-            <span class="text-muted"> {{homework.dueDate?.seconds * 1000 | date: 'longDate'}} </span>
+            <small class="text-muted">Fecha de entrega {{homework.dueDate?.seconds * 1000 | date: 'longDate'}} </small>
           </div>
           <button mat-raised-button color="accent" (click)="showFiles(homework)" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
             Ver archivos
@@ -23,7 +23,7 @@
       </mat-list-item>
     </mat-list>
   </mat-card-content>
-  <mat-card-actions *ngIf="fireAuth.user.admin || fireAuth.user.professor">
+  <mat-card-actions class="bg-light p-3 m-0" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
     <button mat-raised-button color="primary" (click)="showAddHomework()">Crear Tarea</button>
   </mat-card-actions>
 </mat-card>

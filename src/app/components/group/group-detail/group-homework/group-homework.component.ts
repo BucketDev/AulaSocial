@@ -61,7 +61,8 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
 
   showHomework = (homework: Homework) => {
     let ref = this.dialog.open(HomeworkDialogComponent, {
-      data: {homework}
+      data: { homework },
+      width: '400px'
     });
     ref.afterClosed().subscribe((data: any) => {
       if (data)

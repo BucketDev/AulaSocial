@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
-
-import { FireAuthService } from '../auth/fire-auth.service';
-import { Homework } from 'src/app/models/homework.interface';
 import { AngularFireStorage } from '@angular/fire/storage';
+
+import { Homework } from 'src/app/models/homework.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +14,7 @@ export class HomeworkService {
   private collectionName: string = '/homework'
 
   constructor(private db: AngularFirestore,
-              private fireStorage: AngularFireStorage,
-              private fireAuth: FireAuthService) { }
+              private fireStorage: AngularFireStorage) { }
 
   save = (groupId: string, homework: Homework) =>
     this.db.collection(this.collectionGroupName).doc(groupId)

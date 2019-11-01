@@ -5,9 +5,18 @@ service cloud.firestore {
       allow read: if request.auth.uid != null;
     }
     match /groups/{groupId} {
-      allow read: if request.auth.uid != null;
-      allow create: if request.auth.token.professor;
-      allow create, delete: if request.auth.token.admin;
+        allow read: if request.auth.uid != null;
+        allow create: if request.auth.token.professor;
+        allow create, delete: if request.auth.token.admin;
+      match /homework/{homeworkId} {
+        allow read: if request.auth.uid != null;
+        allow create: if request.auth.token.professor;
+        allow create, delete: if request.auth.token.admin;
+        match /files/{fileId} {
+          allow create: if request.auth.uid != null;
+          allow delete: if request.auth.token.admin;
+        }
+      }
     }
   }
 }

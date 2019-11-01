@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -20,6 +22,7 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import localeMX from "@angular/common/locales/es-MX";
 import { registerLocaleData } from '@angular/common';
+import { AULA_FORMATS } from './models/formats.const';
 
 registerLocaleData(localeMX, 'es-MX');
 
@@ -43,7 +46,9 @@ registerLocaleData(localeMX, 'es-MX');
     GroupModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'es-MX'}
+    {provide: LOCALE_ID, useValue: 'es-MX'},
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: AULA_FORMATS },
   ],
   bootstrap: [AppComponent]
 })

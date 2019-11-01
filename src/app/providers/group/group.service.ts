@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, QuerySnapshot, QueryDocumentSnapshot, DocumentChangeType, DocumentChangeAction } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 
 import { FireAuthService } from '../auth/fire-auth.service';
@@ -11,7 +11,8 @@ import { Group } from '../../models/group.interface';
 })
 export class GroupService {
 
-  collectionName: string = '/groups'
+  private collectionName: string = '/groups'
+  groupId: string;
 
   constructor(private db: AngularFirestore,
               private fireAuth: FireAuthService) { }

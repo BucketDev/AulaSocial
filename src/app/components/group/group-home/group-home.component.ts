@@ -46,9 +46,10 @@ export class GroupHomeComponent implements OnDestroy {
   showGroupModal = () => {
     let ref = this.bottomSheet.open(GroupModalComponent);
     ref.afterDismissed().subscribe((data: any) => {
-      this.snackBar.open(`El grupo ${data} ha sido agregado`, '', {
-        duration: 3000
-      });
+      if (data)
+        this.snackBar.open(`El grupo ${data} ha sido agregado`, '', {
+          duration: 3000
+        });
     });
   }
 

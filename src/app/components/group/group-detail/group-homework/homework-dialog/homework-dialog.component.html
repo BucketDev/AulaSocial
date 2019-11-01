@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/spiral-bound-booklet/40' | uriStyleSanitizer "></div>
+      <mat-card-title>{{data.homework.title}}</mat-card-title>
+      <mat-card-subtitle>{{data.homework.dueDate | date: 'longDate'}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{data.homework.description}}</p>
+      <app-upload [path]="getPath()"></app-upload>
+    </mat-card-content>
+  </mat-card>

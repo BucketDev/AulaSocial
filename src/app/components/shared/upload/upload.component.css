@@ -1,0 +1,4 @@
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  padding: 0;
+  margin: 0;
+}

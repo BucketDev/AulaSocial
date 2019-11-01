@@ -3,7 +3,7 @@ export const AULA_FORMATS = {
     dateInput: 'MM/DD/YYYY',
   },
   display: {
-    dateInput: 'MMMM DD, YYYY',
+    dateInput: 'DD [de] MMMM YYYY',
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',

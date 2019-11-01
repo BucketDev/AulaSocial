@@ -1,4 +1,4 @@
-export interface Homework {
+export interface Evaluation {
   uid?: string,
   title: string,
   description: string,

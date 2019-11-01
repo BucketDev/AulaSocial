@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { AngularMaterialModule } from '../../material/angular-material.module';
 import { SharedPipeModule } from 'src/app/pipes/shared-pipe.module';
-
-import { GroupDetailComponent } from './group-detail.component';
 import { SharedModule } from '../../shared/shared.module';
 import { GroupHomeworkModule } from './group-homework/group-homework.module';
+import { GroupEvaluationModule } from './group-evaluation/group-evaluation.module';
+
+import { GroupDetailComponent } from './group-detail.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { GroupHomeworkModule } from './group-homework/group-homework.module';
     AngularMaterialModule,
     SharedPipeModule,
     SharedModule,
-    GroupHomeworkModule
+    GroupHomeworkModule,
+    GroupEvaluationModule
   ],
   declarations: [
     GroupDetailComponent

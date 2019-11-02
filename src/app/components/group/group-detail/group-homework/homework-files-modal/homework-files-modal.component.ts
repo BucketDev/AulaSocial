@@ -8,11 +8,11 @@ import { Reference } from '@angular/fire/storage/interfaces';
 import { File } from 'src/app/models/file.interface';
 
 @Component({
-  selector: 'app-homework-detail-modal',
-  templateUrl: './homework-detail-modal.component.html',
-  styleUrls: ['./homework-detail-modal.component.css']
+  selector: 'app-homework-files-modal',
+  templateUrl: './homework-files-modal.component.html',
+  styleUrls: ['./homework-files-modal.component.css']
 })
-export class HomeworkDetailModalComponent implements OnInit {
+export class HomeworkFilesModalComponent implements OnInit {
 
   homeworkFiles: any[];
   files: File[] = [];

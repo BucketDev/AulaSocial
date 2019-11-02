@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ProfilePhotoComponent {
 
   @Input() size: string = '';
-  @Input() circle: boolean = false;
+  @Input() circle: boolean = true;
   @Input() photoURL: string;
   @Input() viewProfile: boolean = true;
 

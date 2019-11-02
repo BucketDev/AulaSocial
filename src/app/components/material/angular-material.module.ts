@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatButtonModule,
@@ -30,7 +32,8 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule
   ]
 })
 export class AngularMaterialModule { }

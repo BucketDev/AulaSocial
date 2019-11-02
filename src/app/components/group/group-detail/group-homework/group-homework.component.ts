@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GroupService } from 'src/app/providers/group/group.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HomeworkDialogComponent } from './homework-dialog/homework-dialog.component';
-import { HomeworkDetailModalComponent } from './homework-detail-modal/homework-detail-modal.component';
+import { HomeworkFilesModalComponent } from './homework-files-modal/homework-files-modal.component';
 
 @Component({
   selector: 'app-group-homework',
@@ -56,7 +56,7 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
   }
 
   showFiles = (homework: Homework) => {
-    this.bottomSheet.open(HomeworkDetailModalComponent, { data: { homework }});
+    this.bottomSheet.open(HomeworkFilesModalComponent, { data: { homework }});
   }
 
   showHomework = (homework: Homework) => {

@@ -15,7 +15,7 @@
     <div class="col-md-4 col-12 d-flex my-2 px-2" *ngFor="let group of groups">
       <mat-card class="d-flex flex-column flex-fill" [routerLink]="[group.uid]" matRipple>
         <mat-card-header>
-          <app-profile-photo mat-card-avatar [photoURL]="group.photoURL" [circle]="true" class="mr-3"></app-profile-photo>
+          <app-profile-photo mat-card-avatar [photoURL]="group.photoURL" class="mr-3"></app-profile-photo>
           <mat-card-title class="text-primary">{{group.title}}</mat-card-title>
           <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
         </mat-card-header>
@@ -23,7 +23,7 @@
           <p [innerHTML]="group.description"></p>
         </mat-card-content>
         <mat-card-footer class="p-2 text-center bg-light">
-          <small>Creado el {{group.creationDate?.seconds * 1000 | date: 'longDate'}}</small>
+          <small>Creado el {{group.creationDate!.seconds * 1000 | date: 'longDate'}}</small>
         </mat-card-footer>
       </mat-card>
     </div>

@@ -3,7 +3,7 @@
   <div class="col-12 col-lg-4 my-2">
     <mat-card>
       <mat-card-header>
-        <app-profile-photo mat-card-avatar [circle]="true" class="mr-3" [photoURL]="group.photoURL"></app-profile-photo>
+        <app-profile-photo mat-card-avatar class="mr-3" [photoURL]="group.photoURL"></app-profile-photo>
         <mat-card-title class="text-primary">{{group.title}}</mat-card-title>
         <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
       </mat-card-header>
@@ -26,7 +26,7 @@
             <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
             <div class="d-flex flex-column mx-2">
               <span>{{student.email}}</span>
-              <small class="text-muted">{{student.joinedAt?.seconds * 1000 | date: 'longDate'}}</small>
+              <small class="text-muted">{{student.joinedAt!.seconds * 1000 | date: 'longDate'}}</small>
             </div>
           </mat-list-item>
         </mat-list>

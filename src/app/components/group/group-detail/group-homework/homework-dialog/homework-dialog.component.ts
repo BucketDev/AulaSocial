@@ -3,8 +3,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Homework } from 'src/app/models/homework.interface';
 import { FireAuthService } from 'src/app/providers/auth/fire-auth.service';
 import { GroupService } from 'src/app/providers/group/group.service';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { HomeworkDetailModalComponent } from '../homework-detail-modal/homework-detail-modal.component';
 
 @Component({
   selector: 'app-homework-dialog',

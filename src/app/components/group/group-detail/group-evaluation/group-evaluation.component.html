@@ -10,10 +10,13 @@
       <mat-list-item *ngIf="evaluations.length === 0">
           <span class="h4 m-0" mat-line>No hay evaluaciones por mostrar</span>
       </mat-list-item>
-      <mat-list-item *ngFor="let evaluation of evaluations"></mat-list-item>
+      <mat-list-item *ngFor="let evaluation of evaluations" matRipple>
+        <span mat-line>{{evaluation.title}}</span>
+        <small mat-line class="text-muted">Fecha de entrega {{evaluation.dueDate!.seconds * 1000 | date: 'longDate'}}</small>
+      </mat-list-item>
     </mat-list>
   </mat-card-content>
   <mat-card-actions class="bg-light p-3 m-0" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
-    <button mat-raised-button color="primary">Crear evaluación</button>
+    <button mat-raised-button color="primary" (click)="showAddEvaluation()">Crear evaluación</button>
   </mat-card-actions>
 </mat-card>

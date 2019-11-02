@@ -18,13 +18,22 @@ service cloud.firestore {
         }
       }
       match /students/{studentId} {
-        allow read, create: if request.auth.uid != null;
-        allow delete: if request.auth.token.admin || request.auth.token.professor;
+        allow read, create, delete: if request.auth.uid != null;
       }
       match /evaluations/{evaluationId} {
         allow read: if request.auth.uid != null;
         allow create: if request.auth.token.professor;
         allow create, delete: if request.auth.token.admin;
+        match /questions/{questionId} {
+          allow read: if request.auth.uid != null;
+          allow create: if request.auth.token.professor;
+          allow create, delete: if request.auth.token.admin;
+          match /answers/{answerId} {
+            allow read: if request.auth.uid != null;
+            allow create: if request.auth.token.professor;
+            allow create, delete: if request.auth.token.admin;
+          }
+        }
       }
     }
   }

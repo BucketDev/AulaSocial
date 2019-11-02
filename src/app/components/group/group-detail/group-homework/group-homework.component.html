@@ -4,7 +4,7 @@
     <mat-card-title>Tareas</mat-card-title>
     <mat-card-subtitle>Almacena tus tareas</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content class="pb-1">
     <app-loading *ngIf="loading"></app-loading>
     <mat-list *ngIf="!loading">
       <mat-list-item *ngIf="homeworks.length === 0">
@@ -14,7 +14,7 @@
         <div class="d-flex align-items-center flex-fill">
           <div class="d-flex flex-column flex-fill" matRipple (click)="showHomework(homework)">
             <span>{{homework.title}}</span>
-            <small class="text-muted">Fecha de entrega {{homework.dueDate?.seconds * 1000 | date: 'longDate'}} </small>
+            <small class="text-muted">Fecha de entrega {{homework.dueDate!.seconds * 1000 | date: 'longDate'}} </small>
           </div>
           <button mat-raised-button color="accent" (click)="showFiles(homework)" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
             Ver archivos
@@ -24,6 +24,6 @@
     </mat-list>
   </mat-card-content>
   <mat-card-actions class="bg-light p-3 m-0" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
-    <button mat-raised-button color="primary" (click)="showAddHomework()">Crear Tarea</button>
+    <button mat-raised-button color="primary" (click)="showAddHomework()">Crear tarea</button>
   </mat-card-actions>
 </mat-card>

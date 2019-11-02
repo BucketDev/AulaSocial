@@ -10,7 +10,7 @@ import { GroupHomeworkComponent } from './group-homework.component';
 import { GroupModalComponent } from '../../group-modal/group-modal.component';
 import { HomeworkModalComponent } from './homework-modal/homework-modal.component';
 import { HomeworkDialogComponent } from './homework-dialog/homework-dialog.component';
-import { HomeworkDetailModalComponent } from './homework-detail-modal/homework-detail-modal.component';
+import { HomeworkFilesModalComponent } from './homework-files-modal/homework-files-modal.component';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import { HomeworkDetailModalComponent } from './homework-detail-modal/homework-d
     GroupHomeworkComponent,
     HomeworkModalComponent,
     HomeworkDialogComponent,
-    HomeworkDetailModalComponent
+    HomeworkFilesModalComponent
   ],
   exports: [
     GroupHomeworkComponent
@@ -35,7 +35,7 @@ import { HomeworkDetailModalComponent } from './homework-detail-modal/homework-d
   entryComponents: [
     HomeworkModalComponent,
     HomeworkDialogComponent,
-    HomeworkDetailModalComponent
+    HomeworkFilesModalComponent
   ]
 })
 export class GroupHomeworkModule { }

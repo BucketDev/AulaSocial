@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 import { Evaluation } from 'src/app/models/evaluation.interface';
 
@@ -13,8 +12,7 @@ export class EvaluationService {
   private collectionGroupName: string = '/groups'
   private collectionName: string = '/evaluations'
 
-  constructor(private db: AngularFirestore,
-              private fireStorage: AngularFireStorage) { }
+  constructor(private db: AngularFirestore) { }
 
   save = (groupId: string, evaluation: Evaluation) =>
     this.db.collection(this.collectionGroupName).doc(groupId)

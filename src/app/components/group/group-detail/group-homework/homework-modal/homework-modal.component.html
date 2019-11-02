@@ -7,8 +7,7 @@
     <mat-card-content class="d-flex flex-column">
       <mat-form-field appearance="outline" class="flex-fill">
         <mat-label>Título</mat-label>
-        <input matInput placeholder="Nombre de la materia p. ej." formControlName="title">
-        <mat-hint>Servirá para las busquedas de grupos</mat-hint>
+        <input matInput placeholder="Nombre de la tarea p. ej." formControlName="title" required>
         <mat-error *ngIf="formHomework.get('title').errors">Este campo es requerido</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="flex-fill">
@@ -17,7 +16,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="flex-fill">
         <mat-label>Fecha de entrega</mat-label>
-        <input matInput [matDatepicker]="myDatepicker" formControlName="dueDate">
+        <input matInput [matDatepicker]="myDatepicker" formControlName="dueDate" required>
         <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
         <mat-datepicker #myDatepicker></mat-datepicker>
         <mat-error *ngIf="formHomework.get('dueDate').errors">Este campo es requerido</mat-error>

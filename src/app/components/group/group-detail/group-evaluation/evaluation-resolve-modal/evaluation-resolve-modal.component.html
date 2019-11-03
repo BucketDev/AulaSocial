@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{data.evaluation.title}}</mat-card-title>
+    <mat-card-subtitle>Fecha de entrega {{data.evaluation.dueDate['seconds'] * 1000 | date: 'longDate' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p mat-line>{{data.evaluation.description}}</p>
+    <mat-accordion>
+      <app-loading *ngIf="loading; else notLoading"></app-loading>
+      <ng-template #notLoading>
+        <app-evaluation-resolve-panel *ngFor="let question of questions" [evaluation]="data.evaluation" [question]="question"></app-evaluation-resolve-panel>
+      </ng-template>
+    </mat-accordion>
+    <mat-card-actions>
+      <button mat-stroked-button color="primary" (click)="saveEvaluation()">Guardar resultado</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

@@ -11,7 +11,7 @@ import { HomeworkModalComponent } from './homework-modal/homework-modal.componen
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GroupService } from 'src/app/providers/group/group.service';
 import { MatDialog } from '@angular/material/dialog';
-import { HomeworkDialogComponent } from './homework-dialog/homework-dialog.component';
+import { HomeworkUploadModalComponent } from './homework-upload-modal/homework-upload-modal.component';
 import { HomeworkFilesModalComponent } from './homework-files-modal/homework-files-modal.component';
 
 @Component({
@@ -60,13 +60,12 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
   }
 
   showHomework = (homework: Homework) => {
-    let ref = this.dialog.open(HomeworkDialogComponent, {
-      data: { homework },
-      width: '400px'
+    let ref = this.bottomSheet.open(HomeworkUploadModalComponent, {
+      data: { homework }
     });
-    ref.afterClosed().subscribe((data: any) => {
+    ref.afterDismissed().subscribe((data: any) => {
       if (data)
-        this.snackBar.open(`La tarea ${data} ha sido creada`, '', {
+        this.snackBar.open(`La tarea ${homework.title} ha sido almacenada`, '', {
           duration: 3000
         });
     });

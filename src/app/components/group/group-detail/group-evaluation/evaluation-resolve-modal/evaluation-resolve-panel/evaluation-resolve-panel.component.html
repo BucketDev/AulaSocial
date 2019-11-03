@@ -1,0 +1,15 @@
+<mat-expansion-panel [expanded]="false" (opened)="showAnswers()" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{question.title}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <app-loading *ngIf="loading; else notLoading"></app-loading>
+  <ng-template #notLoading>
+    <mat-radio-group [(ngModel)]="answer" class="d-flex flex-column">
+      <mat-radio-button *ngFor="let answer of answers" [value]="answer">
+        {{answer.title}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </ng-template>
+</mat-expansion-panel>

@@ -27,7 +27,7 @@ export class GroupDetailComponent implements OnDestroy {
   constructor(private activatedRoute: ActivatedRoute,
               public groupService: GroupService,
               private studentService: StudentService,
-              private fireAuth: FireAuthService,
+              public fireAuth: FireAuthService,
               private snackBar: MatSnackBar) {
     this.activatedRoute.params.subscribe(params => {
       this.groupService.groupId = params['uid'];

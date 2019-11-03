@@ -1,0 +1,19 @@
+<mat-expansion-panel [expanded]="false" (opened)="showResults()">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="align-items-center">
+        <app-profile-photo [photoURL]="user.photoURL" size="small" class="mr-2"></app-profile-photo>
+        {{user.email}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-loading *ngIf="loading; else notLoading"></app-loading>
+    <ng-template #notLoading>
+      <mat-list>
+        <mat-list-item *ngFor="let result of results">
+          <div class="mr-auto">
+            <span mat-line>{{result.questionTitle}}</span>
+            <small mat-line [ngClass]="{'text-success': result.correct, 'text-danger': !result.correct}">{{result.answerTitle}}</small>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </ng-template>
+  </mat-expansion-panel>

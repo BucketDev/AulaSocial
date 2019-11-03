@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{data.evaluation.title}}</mat-card-title>
+    <mat-card-subtitle>Fecha de entrega {{data.evaluation.dueDate['seconds'] * 1000 | date: 'longDate'}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-accordion>
+      <app-loading *ngIf="loading; else notLoading"></app-loading>
+      <ng-template #notLoading>
+        <app-evaluation-result-panel *ngFor="let user of users" [evaluation]="data.evaluation" [user]="user"></app-evaluation-result-panel>
+      </ng-template>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>

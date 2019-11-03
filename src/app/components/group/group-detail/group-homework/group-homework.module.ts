@@ -9,7 +9,7 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
 import { GroupHomeworkComponent } from './group-homework.component';
 import { GroupModalComponent } from '../../group-modal/group-modal.component';
 import { HomeworkModalComponent } from './homework-modal/homework-modal.component';
-import { HomeworkDialogComponent } from './homework-dialog/homework-dialog.component';
+import { HomeworkUploadModalComponent } from './homework-upload-modal/homework-upload-modal.component';
 import { HomeworkFilesModalComponent } from './homework-files-modal/homework-files-modal.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { HomeworkFilesModalComponent } from './homework-files-modal/homework-fil
   declarations: [
     GroupHomeworkComponent,
     HomeworkModalComponent,
-    HomeworkDialogComponent,
+    HomeworkUploadModalComponent,
     HomeworkFilesModalComponent
   ],
   exports: [
@@ -34,7 +34,7 @@ import { HomeworkFilesModalComponent } from './homework-files-modal/homework-fil
   ],
   entryComponents: [
     HomeworkModalComponent,
-    HomeworkDialogComponent,
+    HomeworkUploadModalComponent,
     HomeworkFilesModalComponent
   ]
 })

@@ -9,6 +9,8 @@ import { GroupService } from 'src/app/providers/group/group.service';
 import { Evaluation } from 'src/app/models/evaluation.interface';
 import { EvaluationModalComponent } from './evaluation-modal/evaluation-modal.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EvaluationResolveModalComponent } from './evaluation-resolve-modal/evaluation-resolve-modal.component';
+import { EvaluationResultModalComponent } from './evaluation-result-modal/evaluation-result-modal.component';
 
 @Component({
   selector: 'app-group-evaluation',
@@ -47,6 +49,24 @@ export class GroupEvaluationComponent implements OnInit, OnDestroy {
           duration: 3000
         });
     });
+  }
+
+  showEvaluation = (evaluation: Evaluation) => {
+    const ref = this.bottomSheet.open(EvaluationResolveModalComponent, {
+      data: { evaluation }
+    });
+    ref.afterDismissed().subscribe((data: any) => {
+      if (data)
+        this.snackBar.open(`La evaluacion ha sido guardada`, '', {
+          duration: 3000
+        });
+    });
+  }
+
+  showResults = (evaluation: Evaluation) => {
+    this.bottomSheet.open(EvaluationResultModalComponent, {
+      data: { evaluation }
+    })
   }
 
 }

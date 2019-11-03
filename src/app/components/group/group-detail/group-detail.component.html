@@ -9,11 +9,13 @@
       </mat-card-header>
       <mat-card-content>
         <p>{{group.description}}</p>
-        <button mat-raised-button color="primary" *ngIf="!hasJoined" (click)="addStudent()">Unirse al grupo</button>
-        <button mat-raised-button color="warn" *ngIf="hasJoined" (click)="removeStudent()">Salir del grupo</button>
+        <div *ngIf="!fireAuth.user.admin && !fireAuth.user.professor">
+          <button mat-raised-button color="primary" *ngIf="!hasJoined" (click)="addStudent()">Unirse al grupo</button>
+          <button mat-raised-button color="warn" *ngIf="hasJoined" (click)="removeStudent()">Salir del grupo</button>
+        </div>
       </mat-card-content>
     </mat-card>
-    <mat-card class="mt-2" *ngIf="hasJoined">
+    <mat-card class="mt-2" *ngIf="hasJoined || fireAuth.user.admin || fireAuth.user.professor">
       <mat-card-header>
         <mat-card-title>Estudiantes</mat-card-title>
       </mat-card-header>

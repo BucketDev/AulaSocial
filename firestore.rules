@@ -34,6 +34,10 @@ service cloud.firestore {
             allow create, delete: if request.auth.token.admin;
           }
         }
+        match /users/{document=**} {
+          allow read, write: if request.auth.uid != null;
+          allow delete: if request.auth.token.admin;
+        }
       }
     }
   }

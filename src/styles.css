@@ -21,6 +21,34 @@ select:focus,
   outline: none !important;
 }
 
+.mat-ripple {
+  cursor: pointer;
+}
+
+.bg-evaluation {
+  background-color: #34ace0;
+}
+
+.text-evaluation {
+  color: #34ace0;
+}
+
+.bg-homework {
+  background-color: #706fd3;
+}
+
+.text-homework {
+  color: #706fd3;
+}
+
+.bg-forum {
+  background-color: #ff793f;
+}
+
+.text-forum {
+  color: #ff793f;
+}
+
 /* Animations */
 .animated {
   -webkit-animation-duration: 1s;

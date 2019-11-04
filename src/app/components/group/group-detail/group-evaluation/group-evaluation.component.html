@@ -1,5 +1,5 @@
 <mat-card class="p-0 my-2">
-  <mat-card-header class="bg-primary p-2 text-white">
+  <mat-card-header class="bg-evaluation p-2 text-white rounded-top">
       <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/test-passed/40' | uriStyleSanitizer "></div>
     <mat-card-title>Evaluaciones</mat-card-title>
     <mat-card-subtitle>Crea y realiza tus evaluaciones</mat-card-subtitle>
@@ -11,6 +11,10 @@
           <span class="h4 m-0" mat-line>No hay evaluaciones por mostrar</span>
       </mat-list-item>
       <mat-list-item *ngFor="let evaluation of evaluations">
+        <div class="mr-2">
+          <img src="https://png.icons8.com/color/ok--v2/20" alt="completed" *ngIf="evaluation.completed">
+          <img src="https://png.icons8.com/color/bubble/20" alt="not completed" *ngIf="!evaluation.completed">
+        </div>
         <div matRipple (click)="showEvaluation(evaluation)" class="mr-auto">
           <span mat-line>{{evaluation.title}}</span>
           <small mat-line class="text-muted">Fecha de entrega {{evaluation.dueDate!.seconds * 1000 | date: 'longDate'}}</small>
@@ -21,7 +25,7 @@
       </mat-list-item>
     </mat-list>
   </mat-card-content>
-  <mat-card-actions class="bg-light p-3 m-0" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
+  <mat-card-actions class="bg-light p-3 m-0 rounded-bottom" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
     <button mat-raised-button color="primary" (click)="showAddEvaluation()">Crear evaluación</button>
   </mat-card-actions>
 </mat-card>

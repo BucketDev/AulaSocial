@@ -1,5 +1,5 @@
 <mat-card class="p-0 my-2">
-  <mat-card-header class="bg-warning p-2 rounded-top">
+  <mat-card-header class="bg-homework p-2 text-white rounded-top">
     <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/spiral-bound-booklet/40' | uriStyleSanitizer "></div>
     <mat-card-title>Tareas</mat-card-title>
     <mat-card-subtitle>Almacena tus tareas</mat-card-subtitle>
@@ -25,7 +25,7 @@
       </mat-list-item>
     </mat-list>
   </mat-card-content>
-  <mat-card-actions class="bg-light p-3 m-0" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
+  <mat-card-actions class="bg-light p-3 m-0 rounded-bottom" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
     <button mat-raised-button color="primary" (click)="showAddHomework()">Crear tarea</button>
   </mat-card-actions>
 </mat-card>

@@ -27,9 +27,11 @@ export class HomeworkService {
 
   findAll = (groupId: string) =>
     this.db.collection(this.collectionGroupName).doc(groupId)
-      .collection(this.collectionName).get().pipe(map((snapshot: QuerySnapshot<Homework>) => {
-        return snapshot.docs.map((document: QueryDocumentSnapshot<Homework>) => {
-          return {uid: document.id, ...document.data()}
+      .collection(this.collectionName).snapshotChanges().pipe(map((documents: DocumentChangeAction<Homework>[]) => {
+        return documents.map((action: DocumentChangeAction<Homework>) => {
+          const homework: Homework = action.payload.doc.data();
+          const uid: string = action.payload.doc.id;
+          return { uid, ...homework };
         })
       }))
 

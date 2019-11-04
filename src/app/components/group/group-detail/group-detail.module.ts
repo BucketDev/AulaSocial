@@ -8,6 +8,7 @@ import { GroupHomeworkModule } from './group-homework/group-homework.module';
 import { GroupEvaluationModule } from './group-evaluation/group-evaluation.module';
 
 import { GroupDetailComponent } from './group-detail.component';
+import { GroupForumModule } from './group-forum/group-forum.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { GroupDetailComponent } from './group-detail.component';
     SharedPipeModule,
     SharedModule,
     GroupHomeworkModule,
-    GroupEvaluationModule
+    GroupEvaluationModule,
+    GroupForumModule
   ],
   declarations: [
     GroupDetailComponent

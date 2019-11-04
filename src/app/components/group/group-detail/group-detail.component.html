@@ -1,10 +1,10 @@
 <app-loading *ngIf="loading"></app-loading>
-<div class="row m-0 flex-wrap" *ngIf="!loading">
+<div class="row flex-wrap" *ngIf="!loading">
   <div class="col-12 col-lg-4 my-2">
     <mat-card>
       <mat-card-header>
         <app-profile-photo mat-card-avatar class="mr-3" [photoURL]="group.photoURL"></app-profile-photo>
-        <mat-card-title class="text-primary">{{group.title}}</mat-card-title>
+        <mat-card-title>{{group.title}}</mat-card-title>
         <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -25,8 +25,8 @@
           <mat-list-item *ngFor="let student of groupService.students">
             <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
             <div class="d-flex flex-column mx-2">
-              <span>{{student.email}}</span>
-              <small class="text-muted">{{student.joinedAt!.seconds * 1000 | date: 'longDate'}}</small>
+              <span>{{student.displayName}}</span>
+              <small class="text-muted">{{student.email}}</small>
             </div>
           </mat-list-item>
         </mat-list>
@@ -36,5 +36,6 @@
   <div class="col-12 col-lg-8" *ngIf="hasJoined || fireAuth.user.admin || fireAuth.user.professor">
       <app-group-homework></app-group-homework>
       <app-group-evaluation></app-group-evaluation>
+      <app-group-forum></app-group-forum>
   </div>
 </div>

@@ -24,6 +24,7 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
 
   homeworks: Homework[];
   loading: boolean = true;
+  homewokrSub: Subscription;
 
   constructor(private homeworkService: HomeworkService,
               public fireAuth: FireAuthService,
@@ -34,23 +35,22 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-    this.homeworkService.findAll(this.groupService.groupId)
-      .toPromise().then((homeworks: Homework[]) => {
+    this.homewokrSub = this.homeworkService.findAll(this.groupService.groupId)
+      .subscribe((homeworks: Homework[]) => {
         this.homeworks = homeworks
-        return homeworks;
-      }).then(async (homeworks: Homework[]) => {
-        return await homeworks.map((homework: Homework) => {
+        homeworks.map((homework: Homework) => {
           this.homeworkService.findUsers(this.groupService.groupId, homework.uid)
             .subscribe((users: User[]) => {
               homework.completed = users.find((user: User) => user.uid === this.fireAuth.user.uid) ? true : false;
             });
         })
-      }).then(() => {
         this.loading = false;
       });
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.homewokrSub.unsubscribe();
+  }
 
   showAddHomework = () => {
     let ref = this.bottomSheet.open(HomeworkModalComponent);

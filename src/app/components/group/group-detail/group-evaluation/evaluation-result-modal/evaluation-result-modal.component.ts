@@ -25,6 +25,7 @@ export class EvaluationResultModalComponent implements OnInit {
       .subscribe((users: User[]) => {
         this.users = users;
         this.loading = false;
+        this.changeDetectorRef.markForCheck();
       });
   }
 

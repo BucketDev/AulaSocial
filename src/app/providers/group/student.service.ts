@@ -27,9 +27,9 @@ export class StudentService {
   ))
 
   save = (groupId: string) => {
-    let {uid, photoURL, email} = this.fireAuth.user;
+    let {uid, photoURL, email, displayName} = this.fireAuth.user;
     return this.db.collection(this.collectionGroupName).doc(groupId)
-      .collection(this.collectionName).doc(uid).set({ uid, photoURL, email, joinedAt: new Date() })
+      .collection(this.collectionName).doc(uid).set({ uid, photoURL, email, displayName, joinedAt: new Date() })
   };
 
   delete = (groupId: string) => {

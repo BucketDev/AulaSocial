@@ -23,7 +23,7 @@
       <mat-card class="d-flex flex-column flex-fill" [routerLink]="[group.uid]" matRipple>
         <mat-card-header>
           <app-profile-photo mat-card-avatar [photoURL]="group.photoURL" class="mr-3"></app-profile-photo>
-          <mat-card-title class="text-primary">{{group.title}}</mat-card-title>
+          <mat-card-title>{{group.title}}</mat-card-title>
           <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="flex-fill group-content">

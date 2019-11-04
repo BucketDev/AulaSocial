@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 import { FireAuthService } from 'src/app/providers/auth/fire-auth.service';
@@ -11,6 +10,8 @@ import { EvaluationModalComponent } from './evaluation-modal/evaluation-modal.co
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EvaluationResolveModalComponent } from './evaluation-resolve-modal/evaluation-resolve-modal.component';
 import { EvaluationResultModalComponent } from './evaluation-result-modal/evaluation-result-modal.component';
+import { User } from 'src/app/models/user.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-group-evaluation',
@@ -20,8 +21,8 @@ import { EvaluationResultModalComponent } from './evaluation-result-modal/evalua
 export class GroupEvaluationComponent implements OnInit, OnDestroy {
 
   evaluations: Evaluation[];
-  evaluationSub: Subscription;
   loading: boolean = true;
+  evaluationSub: Subscription;
 
   constructor(public fireAuth: FireAuthService,
               private evaluationService: EvaluationService,
@@ -33,11 +34,17 @@ export class GroupEvaluationComponent implements OnInit, OnDestroy {
     this.evaluationSub = this.evaluationService.findAll(this.groupService.groupId)
       .subscribe((evaluations: Evaluation[]) => {
         this.evaluations = evaluations;
+        evaluations.map((evaluation: Evaluation) => {
+          this.evaluationService.findUsers(this.groupService.groupId, evaluation.uid)
+            .subscribe((users: User[]) => {
+              evaluation.completed = users.find((user: User) => user.uid === this.fireAuth.user.uid) ? true : false;
+            });
+          })
         this.loading = false;
-      });
+      })
   }
-  
-  ngOnDestroy(): void {
+
+  ngOnDestroy() {
     this.evaluationSub.unsubscribe();
   }
 
@@ -52,15 +59,17 @@ export class GroupEvaluationComponent implements OnInit, OnDestroy {
   }
 
   showEvaluation = (evaluation: Evaluation) => {
-    const ref = this.bottomSheet.open(EvaluationResolveModalComponent, {
-      data: { evaluation }
-    });
-    ref.afterDismissed().subscribe((data: any) => {
-      if (data)
-        this.snackBar.open(`La evaluacion ha sido guardada`, '', {
-          duration: 3000
-        });
-    });
+    if (!evaluation.completed) {
+      const ref = this.bottomSheet.open(EvaluationResolveModalComponent, {
+        data: { evaluation }
+      });
+      ref.afterDismissed().subscribe((data: any) => {
+        if (data)
+          this.snackBar.open(`La evaluacion ${evaluation.title} ha sido almacenada`, '', {
+            duration: 3000
+          });
+      });
+    }
   }
 
   showResults = (evaluation: Evaluation) => {

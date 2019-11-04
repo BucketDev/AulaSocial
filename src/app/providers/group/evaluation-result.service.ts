@@ -23,8 +23,8 @@ export class EvaluationResultService {
     const userRef = this.db.collection(this.collectionGroupName).doc(groupId)
       .collection(this.collectionEvaluationName).doc(evaluationId)
       .collection(this.collectionUsersName).doc(this.fireAuth.user.uid).ref;
-    
-    return userRef.set({ email: this.fireAuth.user.email, photoURL: this.fireAuth.user.photoURL, creationDate: new Date })
+    const {uid, photoURL, email, displayName} = this.fireAuth.user;
+    return userRef.set({ uid, photoURL, email, displayName, creationDate: new Date })
       .then(() => {
         const batch = this.db.firestore.batch();
         results.forEach((result: EvaluationResult) => {

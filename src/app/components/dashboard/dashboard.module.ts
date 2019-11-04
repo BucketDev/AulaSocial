@@ -6,6 +6,7 @@ import { EventsComponent } from './events/events.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { SharedPipeModule } from 'src/app/pipes/shared-pipe.module';
+import { MyGroupsComponent } from './my-groups/my-groups.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SharedPipeModule } from 'src/app/pipes/shared-pipe.module';
   ],
   declarations: [
     DashboardComponent,
-    EventsComponent
+    EventsComponent,
+    MyGroupsComponent
   ],
   exports: [
     DashboardComponent

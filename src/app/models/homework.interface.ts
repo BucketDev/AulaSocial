@@ -3,5 +3,6 @@ export interface Homework {
   title: string,
   description: string,
   dueDate: Date,
-  creationDate: Date
+  creationDate: Date,
+  completed?: boolean
 }

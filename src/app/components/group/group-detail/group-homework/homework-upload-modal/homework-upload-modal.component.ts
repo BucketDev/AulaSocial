@@ -4,6 +4,7 @@ import { Homework } from 'src/app/models/homework.interface';
 import { FireAuthService } from 'src/app/providers/auth/fire-auth.service';
 import { GroupService } from 'src/app/providers/group/group.service';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { HomeworkService } from 'src/app/providers/group/homework.service';
 
 @Component({
   selector: 'app-homework-upload-modal',
@@ -16,7 +17,8 @@ export class HomeworkUploadModalComponent implements OnInit {
               private bottomSheetRef: MatBottomSheetRef<HomeworkUploadModalComponent>,
               private changeDetectorRef: ChangeDetectorRef,
               public fireAuth: FireAuthService,
-              public groupService: GroupService) { }
+              public groupService: GroupService,
+              private homeworkService: HomeworkService) { }
 
   ngOnInit() {
   }
@@ -26,8 +28,11 @@ export class HomeworkUploadModalComponent implements OnInit {
   }
 
   uploaded = (photoURL: string) => {
-    this.changeDetectorRef.markForCheck();
-    this.bottomSheetRef.dismiss(photoURL);
+    this.homeworkService.addUser(this.groupService.groupId, this.data.homework.uid)
+      .then(() => {
+        this.changeDetectorRef.markForCheck();
+        this.bottomSheetRef.dismiss(photoURL);
+      })
   }
 
 }

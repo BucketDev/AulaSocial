@@ -3,5 +3,6 @@ export interface Evaluation {
   title: string,
   description: string,
   dueDate: Date,
-  creationDate: Date
+  creationDate: Date,
+  completed?: boolean
 }

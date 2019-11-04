@@ -9,6 +9,7 @@ import { Group } from 'src/app/models/group.interface';
 import { Student } from 'src/app/models/student.interface';
 import { FireAuthService } from 'src/app/providers/auth/fire-auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/providers/user/user.service';
 
 @Component({
   selector: 'app-group-detail',
@@ -25,6 +26,7 @@ export class GroupDetailComponent implements OnDestroy {
   
   constructor(private activatedRoute: ActivatedRoute,
               public groupService: GroupService,
+              public userService: UserService,
               private studentService: StudentService,
               public fireAuth: FireAuthService,
               private snackBar: MatSnackBar) {
@@ -48,6 +50,9 @@ export class GroupDetailComponent implements OnDestroy {
   addStudent = () => {
     this.studentService.save(this.groupService.groupId)
       .then(() => {
+        this.userService.addGroup({uid: this.groupService.groupId, ...this.group});
+      })
+      .then(() => {
         let ref = this.snackBar.open(`Te has unido al grupo ${this.group.title}`, 'Cancelar', {
           duration: 5000
         });
@@ -56,6 +61,9 @@ export class GroupDetailComponent implements OnDestroy {
   }
 
   removeStudent = () => this.studentService.delete(this.groupService.groupId)
+    .then(() => {
+      this.userService.removeGroup(this.groupService.groupId);
+    })
     .then(() => this.snackBar.open(`Has abandonado el grupo ${this.group.title}`, '', {
       duration: 5000
     }));

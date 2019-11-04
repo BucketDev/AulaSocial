@@ -11,6 +11,10 @@
         <span class="h4 m-0" mat-line>No hay tareas por mostrar</span>
       </mat-list-item>
       <mat-list-item *ngFor="let homework of homeworks">
+        <div class="mr-2">
+          <img src="https://png.icons8.com/color/ok--v2/20" alt="completed" *ngIf="homework.completed">
+          <img src="https://png.icons8.com/color/bubble/20" alt="not completed" *ngIf="!homework.completed">
+        </div>
         <div matRipple (click)="showHomework(homework)" class="mr-auto">
           <span mat-line>{{homework.title}}</span>
           <small mat-line class="text-muted">Fecha de entrega {{homework.dueDate!.seconds * 1000 | date: 'longDate'}} </small>

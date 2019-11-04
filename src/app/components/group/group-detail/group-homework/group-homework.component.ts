@@ -13,6 +13,7 @@ import { GroupService } from 'src/app/providers/group/group.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HomeworkUploadModalComponent } from './homework-upload-modal/homework-upload-modal.component';
 import { HomeworkFilesModalComponent } from './homework-files-modal/homework-files-modal.component';
+import { User } from 'src/app/models/user.interface';
 
 @Component({
   selector: 'app-group-homework',
@@ -23,7 +24,6 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
 
   homeworks: Homework[];
   loading: boolean = true;
-  homeworkSub: Subscription;
 
   constructor(private homeworkService: HomeworkService,
               public fireAuth: FireAuthService,
@@ -34,16 +34,23 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-    this.homeworkSub = this.homeworkService.findAll(this.groupService.groupId)
-      .subscribe((homeworks: Homework[]) => {
+    this.homeworkService.findAll(this.groupService.groupId)
+      .toPromise().then((homeworks: Homework[]) => {
         this.homeworks = homeworks
+        return homeworks;
+      }).then(async (homeworks: Homework[]) => {
+        return await homeworks.map((homework: Homework) => {
+          this.homeworkService.findUsers(this.groupService.groupId, homework.uid)
+            .subscribe((users: User[]) => {
+              homework.completed = users.find((user: User) => user.uid === this.fireAuth.user.uid) ? true : false;
+            });
+        })
+      }).then(() => {
         this.loading = false;
       });
   }
 
-  ngOnDestroy() {
-    this.homeworkSub.unsubscribe();
-  }
+  ngOnDestroy() {}
 
   showAddHomework = () => {
     let ref = this.bottomSheet.open(HomeworkModalComponent);
@@ -60,15 +67,17 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
   }
 
   showHomework = (homework: Homework) => {
-    let ref = this.bottomSheet.open(HomeworkUploadModalComponent, {
-      data: { homework }
-    });
-    ref.afterDismissed().subscribe((data: any) => {
-      if (data)
-        this.snackBar.open(`La tarea ${homework.title} ha sido almacenada`, '', {
-          duration: 3000
-        });
-    });
+    if(!homework.completed) {
+      let ref = this.bottomSheet.open(HomeworkUploadModalComponent, {
+        data: { homework }
+      });
+      ref.afterDismissed().subscribe((data: any) => {
+        if (data)
+          this.snackBar.open(`La tarea ${homework.title} ha sido almacenada`, '', {
+            duration: 3000
+          });
+      });
+    }
   }
 
 }

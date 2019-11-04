@@ -4,6 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User as FirebaseUser, auth } from 'firebase/app';
 import { User } from '../../models/user.interface';
+import { environment } from '../../../environments/environment';
 declare var gapi: any;
 
 @Injectable({
@@ -32,6 +33,15 @@ export class FireAuthService {
         let route = this.router.url.startsWith('/login') ? this.router.url : '/login';
         this.router.navigate([route]);
       }
+    });
+    gapi.load('client', () => {
+      gapi.client.init({
+        apiKey: environment.drive.apiKey,
+        clientId: environment.drive.clientId,
+        discoveryDocs: environment.drive.discoveryDocs,
+        scope: environment.drive.scopes.join(' ')
+      });
+      gapi.client.load('calendar', 'v3', async () => {});
     });
   }
 

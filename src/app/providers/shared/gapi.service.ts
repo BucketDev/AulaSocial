@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { map } from 'rxjs/operators';
 import { CalendarEvent } from 'src/app/models/calendar-event.interface';
 declare var gapi: any;
 
@@ -11,17 +9,7 @@ export class GapiService {
 
   public calendarId: string;
 
-  constructor() {
-    gapi.load('client', () => {
-      gapi.client.init({
-        apiKey: environment.drive.apiKey,
-        clientId: environment.drive.clientId,
-        discoveryDocs: environment.drive.discoveryDocs,
-        scope: environment.drive.scopes.join(' ')
-      });
-      gapi.client.load('calendar', 'v3', async () => {});
-    });
-  }
+  constructor() { }
 
   getCalendarEvents = async () => {
     return await gapi.client.calendar.events.list({

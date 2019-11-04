@@ -18,7 +18,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class GroupDetailComponent implements OnDestroy {
   
   group: Group;
-  students: Student[];
   groupSub: Subscription;
   studentSub: Subscription;
   hasJoined: boolean = false;
@@ -38,7 +37,7 @@ export class GroupDetailComponent implements OnDestroy {
         .then(() => {
           this.studentSub = this.studentService.findAll(params['uid'])
             .subscribe((students: Student[]) =>  {
-              this.students = students;
+              this.groupService.students = students;
               this.hasJoined = students.find((student: Student) => student.uid === fireAuth.user.uid) ? true : false;
               this.loading = false;
             });

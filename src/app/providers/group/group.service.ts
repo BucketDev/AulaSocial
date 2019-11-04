@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { FireAuthService } from '../auth/fire-auth.service';
 
 import { Group } from '../../models/group.interface';
+import { Student } from 'src/app/models/student.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class GroupService {
 
   private collectionName: string = '/groups'
   groupId: string;
+  students: Student[];
 
   constructor(private db: AngularFirestore,
               private fireAuth: FireAuthService) { }
@@ -33,5 +35,7 @@ export class GroupService {
     .pipe(map((snapshot: DocumentSnapshot<Group>) => {
       return {...snapshot.data()}
   }))
+
+  getAttendees = () => this.students.map((student: Student) => { return { email: student.email } });
 
 }

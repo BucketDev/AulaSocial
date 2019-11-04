@@ -1,0 +1,23 @@
+<mat-card class="my-2 p-0">
+  <mat-card-header class="bg-secondary text-white p-2 rounded-top">
+    <div mat-card-avatar [style.background-image]="getCalendarURL() | uriStyleSanitizer "></div>
+    <mat-card-title>Calendario</mat-card-title>
+    <mat-card-subtitle class="text-light">Eventos de Aula Social</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="m-0">
+    <button mat-raised-button (click)="getCalendarEvents()" class="m-2">Obtener eventos</button>
+    <app-loading *ngIf="loading; else notLoading"></app-loading>
+    <ng-template #notLoading>
+      <mat-list>
+        <mat-list-item *ngIf="events.length === 0">No hay eventos en tu calendario</mat-list-item>
+        <mat-list-item *ngFor="let event of events">
+          <div matRipple (click)="goToGroup(event)" class="mr-auto">
+            <span mat-line>{{event.summary}}</span>
+            <small mat-line class="text-muted">Fecha de entrega {{event.start.dateTime | date: 'longDate'}}</small>
+          </div>
+          <a [href]="event.htmlLink" mat-stroked-button>Calendario</a>
+        </mat-list-item>
+      </mat-list>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

@@ -11,6 +11,7 @@ import { AnswerService } from 'src/app/providers/group/answer.service';
 import { Question } from 'src/app/models/question.interface';
 import { Answer } from 'src/app/models/answer.interface';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { GapiService } from 'src/app/providers/shared/gapi.service';
 
 @Component({
   selector: 'app-evaluation-modal',
@@ -38,7 +39,8 @@ export class EvaluationModalComponent implements OnDestroy {
               private groupService: GroupService,
               private evaluationService: EvaluationService,
               private questionService: QuestionService,
-              private answerService: AnswerService) {
+              private answerService: AnswerService,
+              private gapiService: GapiService) {
     this.formEvaluation = new FormGroup({
       'title': new FormControl('', [
         Validators.required
@@ -74,13 +76,21 @@ export class EvaluationModalComponent implements OnDestroy {
   saveEvaluation = () => {
     this.loading = true;
     let dueDate = this.formEvaluation.value['dueDate'].toDate();
-    this.evaluationService.save(this.groupService.groupId, {...this.formEvaluation.value, dueDate})
-      .then((document: DocumentReference) => {
+    this.evaluationService.save(this.groupService.groupId, {...this.formEvaluation.value, dueDate}).then((document: DocumentReference) => {
+      this.gapiService.createEvent({
+        summary: `Evaluacion: ${this.formEvaluation.value['title']}`,
+        location: `group/${this.groupService.groupId}`,
+        attendees: this.groupService.getAttendees(),
+        start: dueDate,
+        end: this.formEvaluation.value['dueDate'].add(1, 'days').toDate()
+      }).then(() => {
         this.evaluationId = document.id;
         this.loading = false;
         this.questionSub = this.questionService.findAll(this.groupService.groupId, this.evaluationId)
           .subscribe((questions: Question[]) => this.questions = questions);
+        this.changeDetectorRef.markForCheck();
       })
+    })
   }
   saveQuestion = () => {
     this.loadingQuestion = true;

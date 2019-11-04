@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { User as FirebaseUser, auth } from 'firebase/app';
 import { ReplaySubject } from 'rxjs';
-import { UserService } from '../user/user.service';
-import { environment } from '../../../environments/environment';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User as FirebaseUser, auth } from 'firebase/app';
 import { User } from '../../models/user.interface';
-declare var gapi;
+declare var gapi: any;
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +16,6 @@ export class FireAuthService {
   isNewUser: boolean = false;
 
   constructor(private angularFireAuth: AngularFireAuth,
-              private userService: UserService,
               private router: Router) {
     this.angularFireAuth.authState.subscribe((user: FirebaseUser) => {
       if (user) {
@@ -35,15 +32,6 @@ export class FireAuthService {
         let route = this.router.url.startsWith('/login') ? this.router.url : '/login';
         this.router.navigate([route]);
       }
-    });
-         
-    gapi.load('client', () => {
-      gapi.client.init({
-        apiKey: environment.drive.apiKey,
-        clientId: environment.drive.clientId,
-        discoveryDocs: environment.drive.discoveryDocs,
-        scope: environment.drive.scopes.join(' ')
-      })
     });
   }
 
@@ -68,7 +56,7 @@ export class FireAuthService {
     });
     const token = googleUser.getAuthResponse().id_token;
     const credential = auth.GoogleAuthProvider.credential(token);
-    await this.angularFireAuth.auth.signInWithCredential(credential)
+    await this.angularFireAuth.auth.signInWithCredential(credential);
   }
 
   signOut = () => {

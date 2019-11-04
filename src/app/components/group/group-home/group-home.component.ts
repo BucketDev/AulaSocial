@@ -53,8 +53,4 @@ export class GroupHomeComponent implements OnDestroy {
     });
   }
 
-  viewGroup = (uid: string) => {
-    console.log(uid);
-  }
-
 }

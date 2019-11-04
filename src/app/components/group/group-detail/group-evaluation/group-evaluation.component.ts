@@ -45,7 +45,7 @@ export class GroupEvaluationComponent implements OnInit, OnDestroy {
     let ref = this.bottomSheet.open(EvaluationModalComponent);
     ref.afterDismissed().subscribe((data: any) => {
       if (data)
-        this.snackBar.open(`La tarea ${data} ha sido creada`, '', {
+        this.snackBar.open(`La evaluación ${data} ha sido creada`, '', {
           duration: 3000
         });
     });

@@ -13,7 +13,7 @@ export const environment = {
   drive: {
     apiKey: "AIzaSyAMVg1lk7zb095jN9gFONHfdZF3HpoH2JE",
     clientId: "377734350824-8ck7jvon2n34b06u5f7ojgrsrkrhvd6i.apps.googleusercontent.com",
-    discoveryDocs: [ "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest" ],
-    scopes: [ "email", "profile", "https://www.googleapis.com/auth/drive.appdata" ]
+    discoveryDocs: [ "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest" ],
+    scopes: [ "email", "profile", "https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.events" ]
   }
 };

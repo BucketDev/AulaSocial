@@ -7,7 +7,7 @@ import { AngularMaterialModule } from 'src/app/components/material/angular-mater
 import { SharedModule } from 'src/app/components/shared/shared.module';
 
 import { GroupHomeworkComponent } from './group-homework.component';
-import { GroupModalComponent } from '../../group-modal/group-modal.component';
+import { GroupModalComponent } from '../../../group-modal/group-modal.component';
 import { HomeworkModalComponent } from './homework-modal/homework-modal.component';
 import { HomeworkUploadModalComponent } from './homework-upload-modal/homework-upload-modal.component';
 import { HomeworkFilesModalComponent } from './homework-files-modal/homework-files-modal.component';

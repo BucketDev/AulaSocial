@@ -1,0 +1,12 @@
+:host ::ng-deep .mat-list-item-content {
+  align-items: flex-start !important;
+}
+
+:host ::ng-deep .mat-list-item {
+  height: auto;
+}
+
+.aula-mini-fab-32 {
+  width: 32px;
+  height: 32px;
+}

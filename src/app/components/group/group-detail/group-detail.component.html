@@ -8,7 +8,7 @@
         <mat-card-subtitle>{{group.owner}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>{{group.description}}</p>
+        <p [innerHTML]="group.description"></p>
         <div *ngIf="!fireAuth.user.admin && !fireAuth.user.professor">
           <button mat-raised-button color="primary" *ngIf="!hasJoined" (click)="addStudent()">Unirse al grupo</button>
           <button mat-raised-button color="warn" *ngIf="hasJoined" (click)="removeStudent()">Salir del grupo</button>
@@ -34,8 +34,6 @@
     </mat-card>
   </div>
   <div class="col-12 col-lg-8" *ngIf="hasJoined || fireAuth.user.admin || fireAuth.user.professor">
-      <app-group-homework></app-group-homework>
-      <app-group-evaluation></app-group-evaluation>
-      <app-group-forum></app-group-forum>
+      <router-outlet></router-outlet>
   </div>
 </div>

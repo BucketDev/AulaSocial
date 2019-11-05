@@ -5,7 +5,7 @@
     <mat-card-subtitle>Fecha de entrega {{data.evaluation.dueDate['seconds'] * 1000 | date: 'longDate' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p mat-line>{{data.evaluation.description}}</p>
+    <p mat-line [innerHTML]="data.evaluation.description"></p>
     <mat-accordion>
       <app-loading *ngIf="loading; else notLoading"></app-loading>
       <ng-template #notLoading>

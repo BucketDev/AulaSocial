@@ -4,7 +4,7 @@
     <mat-card-subtitle>Fecha de entrega {{data.homework.dueDate['seconds'] * 1000 | date: 'longDate' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p mat-line>{{data.homework.description}}</p>
+    <p mat-line [innerHTML]="data.homework.description"></p>
     <app-upload [path]="getPath()" (photoUrl)="uploaded($event)"></app-upload>
   </mat-card-content>
 </mat-card>

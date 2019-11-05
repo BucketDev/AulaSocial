@@ -10,9 +10,18 @@
         <mat-list-item *ngIf="forums.length === 0">
             <span class="h4 m-0" mat-line>No hay foros por mostrar</span>
         </mat-list-item>
+        <mat-list-item *ngFor="let forum of forums" matRipple [routerLink]="['forum', forum.uid]">
+          <div class="mr-2">
+            <app-profile-photo size="small" [photoURL]="forum.photoURL"></app-profile-photo>
+          </div>
+          <div>
+            <span mat-line>{{forum.title}}</span>
+            <small mat-line class="text-muted">{{forum.displayName}}</small>
+          </div>
+        </mat-list-item>
       </mat-list>
     </mat-card-content>
-    <mat-card-actions class="bg-light p-3 m-0 rounded-bottom" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
-      <button mat-raised-button color="primary" (click)="showAddEvaluation()">Crear evaluación</button>
+    <mat-card-actions class="bg-light p-3 m-0 rounded-bottom">
+      <button mat-raised-button color="primary" (click)="showAddForum()">Crear foro</button>
     </mat-card-actions>
   </mat-card>

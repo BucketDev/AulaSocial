@@ -4,7 +4,6 @@ import { HomeworkService } from 'src/app/providers/group/homework.service';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { GroupService } from 'src/app/providers/group/group.service';
 import { GapiService } from 'src/app/providers/shared/gapi.service';
-import { Student } from 'src/app/models/student.interface';
 
 
 @Component({

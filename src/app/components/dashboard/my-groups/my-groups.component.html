@@ -13,7 +13,7 @@
       <mat-list-item *ngFor="let group of groups" matRipple [routerLink]="['/group', group.uid]">
         <app-profile-photo mat-list-icon size="small" [photoURL]="group.photoURL"></app-profile-photo>
         <span mat-line>{{group.title}}</span>
-        <small mat-line>{{group.description}}</small>
+        <small mat-line [innerHTML]="group.description"></small>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

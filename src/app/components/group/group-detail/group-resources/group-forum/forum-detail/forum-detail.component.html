@@ -1,0 +1,63 @@
+<div class="row my-2 mx-0">
+  <button mat-raised-button color="accent" [routerLink]="['/group', groupService.groupId]">Regresar</button>
+</div>
+<div class="row my-2 mx-0">
+  <mat-card class="col-12 p-0">
+    <app-loading *ngIf="loading; else notLoading"></app-loading>
+    <ng-template #notLoading>
+      <mat-card-header class="bg-forum p-2 rounded-top">
+        <app-profile-photo mat-card-avatar [photoURL]="forum.photoURL" class="mr-3"></app-profile-photo>
+        <mat-card-title class="text-white">{{forum.displayName}}</mat-card-title>
+        <mat-card-subtitle>Creado el {{forum.creationDate['seconds'] * 1000 | date: 'longDate'}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="p-2">
+        <p class="h5 text-forum p-2">{{forum.title}}</p>
+        <p class="p-2" [innerHTML]="forum.description"></p>
+      </mat-card-content>
+    </ng-template>
+  </mat-card>
+</div>
+<div class="row my-2 mx-0">
+  <mat-card class="col-12">
+    <mat-card-header>
+      <mat-card-title>Respuestas</mat-card-title>
+    </mat-card-header>
+    <app-loading *ngIf="loadingReplies"></app-loading>
+    <mat-card-content *ngIf="!loadingReplies">
+      <mat-list>
+        <mat-list-item *ngIf="replies.length === 0">No hay respuestas por mostrar</mat-list-item>
+        <mat-list-item *ngFor="let reply of replies">
+          <div class="mr-3">
+            <app-profile-photo size="small" [photoURL]="reply.photoURL"></app-profile-photo>
+            <button mat-mini-fab class="aula-mini-fab-32 my-2" color="" [matBadge]="reply.claps" matBadgeOverlap="true"
+              [style.background-image]="'https://png.icons8.com/color/applause/32' | uriStyleSanitizer"
+              (click)="addClap(reply)">
+            </button>
+          </div>
+          <div>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span>{{reply.displayName}}</span>
+              <small class="text-forum">{{reply.creationDate['seconds'] * 1000 | date: "dd 'de' MMMM 'de' yyyy HH:mm"}}</small>
+            </div>
+            <p class="text-muted" [innerHTML]="reply.description"></p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-footer class="p-2 bg-light">
+      <form [formGroup]="formReply" #formReplyRef="ngForm" (ngSubmit)="saveReply(formReplyRef)">
+        <div class="d-flex">
+          <app-profile-photo size="small" [photoURL]="fireAuth.user.photoURL" class="m-2"></app-profile-photo>
+          <mat-form-field appearance="outline" class="flex-fill">
+            <mat-label>Descripción</mat-label>
+            <textarea rows="2" matInput placeholder="Responde respecto al tema del foro" formControlName="description" required></textarea>
+            <mat-error *ngIf="formReply.get('description').errors">Este campo es requerido</mat-error>
+          </mat-form-field>
+          <button mat-mini-fab color="default" class="m-2" [disabled]="formReply.invalid">
+            <img src="https://png.icons8.com/color/filled-sent/24" alt="send message">
+          </button>
+        </div>
+      </form>
+    </mat-card-footer>
+  </mat-card>
+</div>

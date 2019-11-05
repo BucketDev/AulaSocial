@@ -36,6 +36,7 @@ export class EvaluationResultPanelComponent implements OnInit, OnDestroy {
       .subscribe((results: EvaluationResult[]) => {
         this.results = results;
         this.loading = false;
+        this.changeDetectorRef.markForCheck();
       });
   }
 

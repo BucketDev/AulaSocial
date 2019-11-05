@@ -1,0 +1,84 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title class="text-evaluation">Crea una nueva evaluación</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-horizontal-stepper linear>
+      <mat-step label="Información" [completed]="false" [stepControl]="formEvaluation">
+        <form (ngSubmit)="saveEvaluation()" [formGroup]="formEvaluation" class="animated fadeIn">
+          <div class="d-flex flex-column">
+            <mat-form-field appearance="outline" class="flex-fill">
+              <mat-label>Título</mat-label>
+              <input matInput placeholder="Nombre de la evaluación" formControlName="title" required>
+              <mat-error *ngIf="formEvaluation.get('title').errors">Este campo es requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="flex-fill">
+              <mat-label>Descripción</mat-label>
+              <textarea rows="5" matInput placeholder="De que trata la evaluación p. ej." formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="flex-fill">
+              <mat-label>Fecha de entrega</mat-label>
+              <input matInput [matDatepicker]="myDatepicker" formControlName="dueDate" required>
+              <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+              <mat-datepicker #myDatepicker></mat-datepicker>
+              <mat-error *ngIf="formEvaluation.get('dueDate').errors">Este campo es requerido</mat-error>
+            </mat-form-field>
+          </div>
+          <button mat-stroked-button color="primary" matStepperNext [disabled]="formEvaluation.invalid">Siguiente</button>
+        </form>
+      </mat-step>
+      <mat-step label="Preguntas" [completed]="false">
+        <app-loading *ngIf="loading; else notLoading"></app-loading>
+        <ng-template #notLoading>
+          <mat-list *ngIf="!loading">
+            <mat-list-item *ngIf="questions.length === 0">
+              <span class="h4 m-0" mat-line>No hay preguntas por mostrar</span>
+            </mat-list-item>
+            <mat-list-item class="my-1" *ngFor="let question of questions">
+              <span mat-line>{{question.title}}</span>
+            </mat-list-item>
+          </mat-list>
+          <button mat-raised-button class="mx-2" color="primary" (click)="showAddQuestion()">Crear pregunta</button>
+          <button mat-stroked-button color="primary" (click)="finishEvaluation()">Finalizar evaluación</button>
+          <mat-horizontal-stepper linear *ngIf="addingQuestion">
+            <mat-step label="Pregunta" [completed]="false" [stepControl]="formQuestion">
+              <form (ngSubmit)="saveQuestion()" [formGroup]="formQuestion" class="animated fadeIn">
+                <mat-form-field appearance="outline" class="flex-fill d-block">
+                  <mat-label>Título</mat-label>
+                  <input matInput placeholder="Título de la pregunta" formControlName="title" required>
+                  <mat-error *ngIf="formQuestion.get('title').errors">Este campo es requerido</mat-error>
+                </mat-form-field>
+                <button mat-stroked-button color="primary" matStepperNext [disabled]="formQuestion.invalid">Siguiente</button>
+              </form>
+            </mat-step>
+            <mat-step label="Respuestas" [completed]="false">
+              <app-loading *ngIf="loadingQuestion"></app-loading>
+              <mat-list *ngIf="!loadingQuestion">
+                <mat-list-item *ngIf="answers.length === 0">
+                  <span class="h4 m-0" mat-line>No hay respuestas por mostrar</span>
+                </mat-list-item>
+                <mat-list-item class="my-1" *ngFor="let answer of answers">
+                  <span mat-line>{{answer.title}}</span>
+                  <small mat-line [ngClass]="{'text-success': answer.correct, 'text-danger': !answer.correct}">
+                    {{answer.correct ? 'Correcta' : 'Incorrecta'}}
+                  </small>
+                </mat-list-item>
+              </mat-list>
+              <button mat-raised-button class="mx-2" color="primary" (click)="showAddAnswer()">Crear respuesta</button>
+              <button mat-stroked-button color="primary" (click)="finishQuestion()">Finalizar pregunta</button>
+              <form (ngSubmit)="saveAnswer()" [formGroup]="formAnswer" class="animated fadeIn mt-2" *ngIf="addingAnswer">
+                <mat-form-field appearance="outline" class="flex-fill d-block">
+                  <mat-label>Título</mat-label>
+                  <input matInput placeholder="Título de la respuesta" formControlName="title" required>
+                  <mat-error *ngIf="formAnswer.get('title').errors">Este campo es requerido</mat-error>
+                </mat-form-field>
+                <mat-slide-toggle formControlName="correct" class="d-block mb-3">Respuesta correcta</mat-slide-toggle>
+                <button mat-stroked-button color="primary" [disabled]="formAnswer.invalid">Guardar Respuesta</button>
+              </form>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </ng-template>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card-content>
+</mat-card>

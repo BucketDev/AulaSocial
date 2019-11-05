@@ -37,6 +37,14 @@ service cloud.firestore {
           allow delete: if request.auth.token.admin;
         }
       }
+      match /forums/{forumId} {
+        allow read, create: if request.auth.uid != null;
+        allow create, delete: if request.auth.token.admin;
+        match /replies/{replyId} {
+          allow read, write: if request.auth.uid != null;
+          allow delete: if request.auth.token.admin;
+        }
+      }
     }
   }
 }

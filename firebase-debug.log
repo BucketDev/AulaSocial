@@ -1,0 +1,37 @@
+[debug] [2019-11-05T04:30:44.802Z] ----------------------------------------------------------------------
+[debug] [2019-11-05T04:30:44.803Z] Command:       /home/UNOSQUARE/rodrigo.loyola/.nvm/versions/node/v11.9.0/bin/node /home/UNOSQUARE/rodrigo.loyola/.nvm/versions/node/v11.9.0/bin/firebase deploy --only hosting
+[debug] [2019-11-05T04:30:44.803Z] CLI Version:   7.6.2
+[debug] [2019-11-05T04:30:44.803Z] Platform:      linux
+[debug] [2019-11-05T04:30:44.803Z] Node Version:  v11.9.0
+[debug] [2019-11-05T04:30:44.804Z] Time:          Mon Nov 04 2019 22:30:44 GMT-0600 (Central Standard Time)
+[debug] [2019-11-05T04:30:44.804Z] ----------------------------------------------------------------------
+[debug] [2019-11-05T04:30:44.804Z] 
+[debug] [2019-11-05T04:30:44.808Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-11-05T04:30:44.808Z] > authorizing via signed-in user
+[debug] [2019-11-05T04:30:44.808Z] [iam] checking project aula-social for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-11-05T04:30:44.810Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-11-05T04:30:44.810Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-11-05T04:30:45.077Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-05T04:30:45.116Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/aula-social:testIamPermissions  
+
+[debug] [2019-11-05T04:30:45.433Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-05T04:30:45.440Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/aula-social  
+ 
+[debug] [2019-11-05T04:30:45.882Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'aula-social'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-11-05T04:30:47.473Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/aula-social/versions  
+
+[debug] [2019-11-05T04:30:48.799Z] <<< HTTP RESPONSE 200
+[info] i  hosting[aula-social]: beginning deploy...
+[info] i  hosting[aula-social]: found 10 files in dist/AulaSocial
+[debug] [2019-11-05T04:30:49.136Z] [hosting] hash cache [ZGlzdC9BdWxhU29jaWFs] stored for 10 files
+[debug] [2019-11-05T04:30:49.136Z] [hosting][hash queue][FINAL]
+[debug] [2019-11-05T04:30:49.136Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/aula-social/versions/1299d87da8d0c82b:populateFiles  
+ <request body omitted>
+[debug] [2019-11-05T04:30:49.720Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-05T04:30:49.728Z] [hosting][populate queue][FINAL]
+[debug] [2019-11-05T04:30:49.728Z] [hosting] uploads queued: 4

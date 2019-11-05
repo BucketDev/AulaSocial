@@ -57,6 +57,14 @@ select:focus,
   color: #33d9b2;
 }
 
+.bg-chat {
+  background-color: #ff5252;
+}
+
+.text-chat {
+  color: #ff5252;
+}
+
 /* Animations */
 .animated {
   -webkit-animation-duration: 1s;

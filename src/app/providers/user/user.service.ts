@@ -4,8 +4,6 @@ import { User } from '../../models/user.interface';
 import { map } from 'rxjs/operators';
 import { FireAuthService } from '../auth/fire-auth.service';
 import { Group } from 'src/app/models/group.interface';
-import { DocumentSnapshot } from '@google-cloud/firestore';
-import { group } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'

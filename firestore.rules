@@ -45,6 +45,9 @@ service cloud.firestore {
           allow delete: if request.auth.token.admin;
         }
       }
+      match /chat/{document=**} {
+        allow read, create: if request.auth.uid != null;
+      }
     }
   }
 }

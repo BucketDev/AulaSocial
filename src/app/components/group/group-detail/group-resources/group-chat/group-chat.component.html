@@ -1,0 +1,35 @@
+<mat-card class="p-0 my-2">
+  <mat-card-header class="p-2 bg-chat text-white rounded-top">
+    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/spiral-bound-booklet/40' | uriStyleSanitizer "></div>
+    <mat-card-title>Chat</mat-card-title>
+    <mat-card-subtitle>Platica con tu profesor y compañeros</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="m-0 aula-chat-container d-flex flex-column justify-content-end">
+    <app-loading *ngIf="loading; else notLoading"></app-loading>
+    <ng-template #notLoading>
+      <div class="my-1" *ngFor="let message of messages">
+        <div class="d-flex align-items-top p-2" [ngClass]="{'flex-row-reverse': sameSender(message)}">
+          <app-profile-photo class="mx-2" size="small" [photoURL]="message.photoURL"></app-profile-photo>
+          <div class="flex-grow-1 rounded p-2"
+            [ngClass]="{'bg-chat text-white ': !sameSender(message), 'bg-light': sameSender(message)}">
+            <p class="h6 font-weight-bold m-0">{{message.displayName}}</p>
+            <span>{{message.message}}</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-footer class="m-0 p-2 bg-light rounded-bottom">
+    <form [formGroup]="formChat" #formChatRef="ngForm" (ngSubmit)="saveReply(formChatRef)">
+      <div class="d-flex">
+        <app-profile-photo size="small" [photoURL]="fireAuth.user.photoURL" class="m-2"></app-profile-photo>
+        <mat-form-field appearance="outline" class="flex-fill">
+          <textarea rows="2" matInput placeholder="Escribe tu mensaje" formControlName="message" required></textarea>
+        </mat-form-field>
+        <button mat-mini-fab color="default" class="m-2" [disabled]="formChat.invalid">
+          <img src="https://png.icons8.com/color/filled-sent/24" alt="send message">
+        </button>
+      </div>
+    </form>
+  </mat-card-footer>
+</mat-card>

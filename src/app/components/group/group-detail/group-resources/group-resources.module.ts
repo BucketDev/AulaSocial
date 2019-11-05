@@ -7,10 +7,14 @@ import { GroupForumModule } from './group-forum/group-forum.module';
 import { AngularMaterialModule } from 'src/app/components/material/angular-material.module';
 import { SharedModule } from 'src/app/components/shared/shared.module';
 import { SharedPipeModule } from 'src/app/pipes/shared-pipe.module';
+import { GroupChatComponent } from './group-chat/group-chat.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     AngularMaterialModule,
     SharedModule,
     SharedPipeModule,
@@ -19,10 +23,12 @@ import { SharedPipeModule } from 'src/app/pipes/shared-pipe.module';
     GroupForumModule
   ],
   declarations: [
-    GroupResourcesComponent
+    GroupResourcesComponent,
+    GroupChatComponent
   ],
   exports: [
-    GroupResourcesComponent
+    GroupResourcesComponent,
+    GroupChatComponent
   ]
 })
 export class GroupResourcesModule { }

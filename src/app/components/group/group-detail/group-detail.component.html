@@ -32,6 +32,7 @@
         </mat-list>
       </mat-card-content>
     </mat-card>
+    <app-group-chat></app-group-chat>
   </div>
   <div class="col-12 col-lg-8" *ngIf="hasJoined || fireAuth.user.admin || fireAuth.user.professor">
       <router-outlet></router-outlet>

@@ -20,10 +20,11 @@ export class AdminHomeworkComponent implements OnInit, OnDestroy {
               private gapiService: GapiService) {
     groupService.findAll().subscribe((groups: Group[]) => {
       this.homeworks = [];
-      groups.forEach((group: Group) => {
-        homeworkService.findAllAdminByGroupId(group.uid).subscribe((homeworks: Homework[]) => this.homeworks = homeworks);
-        this.loading = false;
-      });
+      this.loading = false;
+      groups.forEach((group: Group) => 
+        homeworkService.findAllAdminByGroupId(group.uid)
+          .subscribe((homeworks: Homework[]) => this.homeworks = homeworks)
+      );
     });
   }
 

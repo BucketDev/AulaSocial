@@ -18,11 +18,11 @@ export class AdminForumComponent {
               private forumService: ForumService) {
     groupService.findAll().subscribe((groups: Group[]) => {
       this.forums = [];
-      groups.forEach((group: Group) => {
+      this.loading = false;
+      groups.forEach((group: Group) => 
         forumService.findAllAdminByGroupId(group.uid)
-          .subscribe((forums: Forum[]) => this.forums = forums);
-            this.loading = false;
-          });
+          .subscribe((forums: Forum[]) => this.forums = forums)
+      );
     });
   }
 

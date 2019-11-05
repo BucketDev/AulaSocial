@@ -20,11 +20,11 @@ export class AdminEvaluationComponent {
               private gapiService: GapiService) {
     groupService.findAll().subscribe((groups: Group[]) => {
       this.evaluations = [];
-      groups.forEach((group: Group) => {
+      this.loading = false;
+      groups.forEach((group: Group) => 
         evaluationService.findAllAdminByGroupId(group.uid)
-          .subscribe((evaluations: Evaluation[]) => this.evaluations = evaluations);
-            this.loading = false;
-          });
+          .subscribe((evaluations: Evaluation[]) => this.evaluations = evaluations)
+      );
     });
   }
 

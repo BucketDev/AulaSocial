@@ -31,7 +31,7 @@ export class GroupEvaluationComponent implements OnInit, OnDestroy {
               private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.evaluationSub = this.evaluationService.findAll(this.groupService.groupId)
+    this.evaluationSub = this.evaluationService.findAllByGroupId(this.groupService.groupId)
       .subscribe((evaluations: Evaluation[]) => {
         this.evaluations = evaluations;
         evaluations.map((evaluation: Evaluation) => {

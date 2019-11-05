@@ -1,28 +1,38 @@
-<app-loading *ngIf="loading"></app-loading>
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between" *ngFor="let user of users">
-    <div class="d-flex align-items-center">
-      <app-profile-photo [photoURL]="user.photoURL"></app-profile-photo>
-      <div class="d-flex flex-column mx-2">
-        <span class="h5 m-0"> {{user.displayName}} </span>
-        <span> {{user.email}} </span>
-      </div>
-    </div>
-    <div class="d-flex align-items-center">
-      <button mat-raised-button [matMenuTriggerFor]="grantsMenu">
-        <img src="https://png.icons8.com/color/administrative-tools/24" alt="grants"> Permisos
-      </button>
-      <mat-menu #grantsMenu="matMenu">
-        <button mat-menu-item (click)="addAdmin(user)">
-          <img src="https://png.icons8.com/color/businessman/24" alt="admin"> Administrador
-        </button>
-        <button mat-menu-item (click)="addProfessor(user)">
-          <img src="https://png.icons8.com/color/teacher/24" alt="professor"> Profesor
-        </button>
-        <button mat-menu-item (click)="removeProfessor(user)">
-          <img src="https://png.icons8.com/color/student-male--v2/24" alt="student"> Alumno
-        </button>
-      </mat-menu>
-    </div>
-  </li>
-</ul>
+<div class="row m-0">
+  <div class="col-12 col-lg-4 my-2">
+    <mat-card>
+      <mat-card-header>
+        <app-profile-photo mat-card-avatar class="mr-3" [photoURL]="fireAuth.user.photoURL"></app-profile-photo>
+        <mat-card-title class="text-admin">Administración</mat-card-title>
+        <mat-card-subtitle>Administra tus recursos</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item routerLink="users" routerLinkActive="mat-list-item-active" matRipple>
+            <span mat-line>Usuarios</span>
+            <small class="text-muted" mat-line>Administra roles y permisos</small>
+          </mat-list-item>
+          <mat-list-item routerLink="groups" routerLinkActive="mat-list-item-active" matRipple>
+            <span mat-line>Grupos</span>
+            <small class="text-muted" mat-line>Administra tus grupos</small>
+          </mat-list-item>
+          <mat-list-item routerLink="homeworks" routerLinkActive="mat-list-item-active" matRipple>
+            <span mat-line>Tareas</span>
+            <small class="text-muted" mat-line>Administra tus tareas</small>
+          </mat-list-item>
+          <mat-list-item routerLink="evaluations" routerLinkActive="mat-list-item-active" matRipple>
+            <span mat-line>Evaluaciones</span>
+            <small class="text-muted" mat-line>Administra tus evaluaciones</small>
+          </mat-list-item>
+          <mat-list-item routerLink="forums" routerLinkActive="mat-list-item-active" matRipple>
+            <span mat-line>Foros</span>
+            <small class="text-muted" mat-line>Administra tus foros</small>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-12 col-lg-8 my-2">
+    <router-outlet></router-outlet>
+  </div>
+</div>

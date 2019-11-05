@@ -35,7 +35,7 @@ export class GroupHomeworkComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-    this.homewokrSub = this.homeworkService.findAll(this.groupService.groupId)
+    this.homewokrSub = this.homeworkService.findAllByGroupId(this.groupService.groupId)
       .subscribe((homeworks: Homework[]) => {
         this.homeworks = homeworks
         homeworks.map((homework: Homework) => {

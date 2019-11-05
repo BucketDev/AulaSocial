@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { AngularFireMessagingModule } from '@angular/fire/messaging'
 
 import { SharedModule } from './components/shared/shared.module';
 import { LoginModule } from "./components/login/login.module";
@@ -39,6 +40,7 @@ registerLocaleData(localeMX, 'es-MX');
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireFunctionsModule,
+    AngularFireMessagingModule,
     SharedModule,
     LoginModule,
     DashboardModule,

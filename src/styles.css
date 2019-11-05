@@ -49,6 +49,14 @@ select:focus,
   color: #ff793f;
 }
 
+.bg-admin {
+  background-color: #33d9b2;
+}
+
+.text-admin {
+  color: #33d9b2;
+}
+
 /* Animations */
 .animated {
   -webkit-animation-duration: 1s;

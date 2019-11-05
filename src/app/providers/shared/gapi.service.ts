@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CalendarEvent } from 'src/app/models/calendar-event.interface';
+import { HomeworkService } from '../group/homework.service';
+import { GroupService } from '../group/group.service';
 declare var gapi: any;
 
 @Injectable({
@@ -38,6 +40,14 @@ export class GapiService {
         },
         attendees: event.attendees
       }
+    })
+  }
+
+  deleteEvent = async (eventId: string) => {
+    return await gapi.client.calendar.events.delete({
+      calendarId: encodeURIComponent('primary'),
+      eventId,
+      sendNotifications: false
     })
   }
 

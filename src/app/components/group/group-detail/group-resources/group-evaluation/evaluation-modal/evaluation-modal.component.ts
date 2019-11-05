@@ -83,7 +83,9 @@ export class EvaluationModalComponent implements OnDestroy {
         attendees: this.groupService.getAttendees(),
         start: dueDate,
         end: this.formEvaluation.value['dueDate'].add(1, 'days').toDate()
-      }).then(() => {
+      })
+      .then((event) => this.evaluationService.updateEvent(this.groupService.groupId, document.id, event.result.id))
+      .then(() => {
         this.evaluationId = document.id;
         this.loading = false;
         this.questionSub = this.questionService.findAll(this.groupService.groupId, this.evaluationId)

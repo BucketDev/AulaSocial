@@ -16,8 +16,8 @@ service cloud.firestore {
       }
       match /homework/{homeworkId} {
         allow read: if request.auth.uid != null;
-        allow create: if request.auth.token.professor;
-        allow create, delete: if request.auth.token.admin;
+        allow write: if request.auth.token.professor;
+        allow write, delete: if request.auth.token.admin;
         match /users/{userId} {
           allow read, create: if request.auth.uid != null;
           allow delete: if request.auth.token.admin;
@@ -25,8 +25,8 @@ service cloud.firestore {
       }
       match /evaluations/{evaluationId} {
         allow read: if request.auth.uid != null;
-        allow create: if request.auth.token.professor;
-        allow create, delete: if request.auth.token.admin;
+        allow write: if request.auth.token.professor;
+        allow write, delete: if request.auth.token.admin;
         match /questions/{document=**} {
           allow read: if request.auth.uid != null;
           allow create: if request.auth.token.professor;

@@ -21,7 +21,7 @@ export class GroupService {
 
   save = (group: Group) => this.db.collection(this.collectionName).add({
     owner: this.fireAuth.user.displayName, photoURL: this.fireAuth.user.photoURL,  ...group, creationDate: new Date()
-  });
+  }); 
 
   findAll = () => this.db.collection(this.collectionName).snapshotChanges().pipe(map((actions: DocumentChangeAction<Group>[]) =>
     actions.map((action: DocumentChangeAction<Group>) => {
@@ -37,5 +37,7 @@ export class GroupService {
   }))
 
   getAttendees = () => this.students.map((student: Student) => { return { email: student.email } });
+
+  delete = (groupId: string) => this.db.collection(this.collectionName).doc(groupId).delete();
 
 }

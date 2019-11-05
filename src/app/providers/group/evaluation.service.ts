@@ -20,13 +20,23 @@ export class EvaluationService {
     this.db.collection(this.collectionGroupName).doc(groupId)
       .collection(this.collectionName).add({creationDate: new Date, ...evaluation});
 
-  findAll = (groupId: string) =>
+  findAllByGroupId = (groupId: string) =>
     this.db.collection(this.collectionGroupName).doc(groupId)
       .collection(this.collectionName).snapshotChanges().pipe(map((documents: DocumentChangeAction<Evaluation>[]) => {
       return documents.map((action: DocumentChangeAction<Evaluation>) => {
         const evaluation: Evaluation = action.payload.doc.data();
         const uid: string = action.payload.doc.id;
         return { uid, ...evaluation };
+      })
+    }))
+  
+  findAllAdminByGroupId = (groupId: string) =>
+    this.db.collection(this.collectionGroupName).doc(groupId)
+      .collection(this.collectionName).get().pipe(map((snapshot: QuerySnapshot<Evaluation>) => {
+        return snapshot.docs.map((document: QueryDocumentSnapshot<Evaluation>) => {
+          const evaluation: Evaluation = document.data();
+          const uid: string = document.id;
+          return {uid, groupId, ...evaluation}
       })
     }))
 
@@ -40,4 +50,12 @@ export class EvaluationService {
       return { uid, ...user };
     })
   ))
+
+  delete = (groupId: string, evaluationId: string) =>
+    this.db.collection(this.collectionGroupName).doc(groupId)
+      .collection(this.collectionName).doc(evaluationId).delete();
+  
+  updateEvent = (gropId: string, evaluationId: string, eventId: string) =>
+    this.db.collection(this.collectionGroupName).doc(gropId)
+      .collection(this.collectionName).doc(evaluationId).update({ eventId })
 }

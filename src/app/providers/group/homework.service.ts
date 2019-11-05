@@ -25,7 +25,7 @@ export class HomeworkService {
     this.db.collection(this.collectionGroupName).doc(groupId)
       .collection(this.collectionName).add({creationDate: new Date, ...homework});
 
-  findAll = (groupId: string) =>
+  findAllByGroupId = (groupId: string) =>
     this.db.collection(this.collectionGroupName).doc(groupId)
       .collection(this.collectionName).snapshotChanges().pipe(map((documents: DocumentChangeAction<Homework>[]) => {
         return documents.map((action: DocumentChangeAction<Homework>) => {
@@ -34,6 +34,16 @@ export class HomeworkService {
           return { uid, ...homework };
         })
       }))
+  
+  findAllAdminByGroupId = (groupId: string) =>
+    this.db.collection(this.collectionGroupName).doc(groupId)
+      .collection(this.collectionName).get().pipe(map((snapshot: QuerySnapshot<Homework>) => {
+        return snapshot.docs.map((document: QueryDocumentSnapshot<Homework>) => {
+          const homework: Homework = document.data();
+          const uid: string = document.id;
+          return {uid, groupId, ...homework}
+      })
+    }))
 
   addUser = (groupId: string, homeworkId: string) => 
     this.db.collection(this.collectionGroupName).doc(groupId)
@@ -53,4 +63,12 @@ export class HomeworkService {
 
   findAllFiles = (groupId: string, homeworkId: string) =>
     this.fireStorage.storage.ref(`groups/${groupId}/homework/${homeworkId}`).listAll()
+
+  delete = (groupId: string, homeworkId: string) =>
+    this.db.collection(this.collectionGroupName).doc(groupId)
+      .collection(this.collectionName).doc(homeworkId).delete();
+  
+  updateEvent = (gropId: string, homeworkId: string, eventId: string) =>
+    this.db.collection(this.collectionGroupName).doc(gropId)
+      .collection(this.collectionName).doc(homeworkId).update({ eventId })
 }

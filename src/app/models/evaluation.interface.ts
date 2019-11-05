@@ -1,8 +1,10 @@
 export interface Evaluation {
   uid?: string,
+  groupId?: string,
   title: string,
   description: string,
   dueDate: Date,
   creationDate: Date,
-  completed?: boolean
+  completed?: boolean,
+  eventId?: string
 }

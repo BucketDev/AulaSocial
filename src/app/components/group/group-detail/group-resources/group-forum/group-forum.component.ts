@@ -26,7 +26,7 @@ export class GroupForumComponent implements OnInit, OnDestroy {
               private forumService: ForumService) { }
 
   ngOnInit() {
-    this.forumSub = this.forumService.findAll(this.groupService.groupId)
+    this.forumSub = this.forumService.findAllByGroupId(this.groupService.groupId)
       .subscribe((forums: Forum[]) => {
         this.forums = forums;
         this.loading = false;

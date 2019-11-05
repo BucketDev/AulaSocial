@@ -1,5 +1,6 @@
 export interface Forum {
   uid?: string,
+  groupId: string,
   title: string,
   description: string,
   creationDate?: Date

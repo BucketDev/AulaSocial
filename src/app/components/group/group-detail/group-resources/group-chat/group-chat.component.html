@@ -14,7 +14,7 @@
           <div class="flex-grow-1 rounded p-2"
             [ngClass]="{'bg-chat text-white ': !sameSender(message), 'bg-light': sameSender(message)}">
             <p class="h6 font-weight-bold m-0">{{message.displayName}}</p>
-            <span>{{message.message}}</span>
+            <span [innerHTML]="message.message"></span>
           </div>
         </div>
       </div>

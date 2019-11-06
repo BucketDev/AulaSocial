@@ -65,6 +65,14 @@ select:focus,
   color: #ff5252;
 }
 
+.aula-min-w-0 {
+  min-width: 0 !important;
+}
+
+.aula-min-w-auto {
+  min-width: auto !important;
+}
+
 /* Animations */
 .animated {
   -webkit-animation-duration: 1s;

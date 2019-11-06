@@ -11,11 +11,11 @@
       <mat-list>
         <mat-list-item *ngIf="events.length === 0">No hay eventos en tu calendario</mat-list-item>
         <mat-list-item *ngFor="let event of events">
-          <div matRipple (click)="goToGroup(event)" class="mr-auto">
+          <div matRipple (click)="goToGroup(event)" class="mr-auto aula-min-w-0">
             <span mat-line>{{event.summary}}</span>
             <small mat-line class="text-muted">Fecha de entrega {{event.start.dateTime | date: 'longDate'}}</small>
           </div>
-          <a [href]="event.htmlLink" mat-stroked-button>Calendario</a>
+          <a [href]="event.htmlLink" mat-stroked-button class="aula-min-w-auto">Calendario</a>
         </mat-list-item>
       </mat-list>
     </ng-template>

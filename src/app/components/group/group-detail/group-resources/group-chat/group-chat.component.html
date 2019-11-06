@@ -4,11 +4,12 @@
     <mat-card-title>Chat</mat-card-title>
     <mat-card-subtitle>Platica con tu profesor y compañeros</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content class="m-0 aula-chat-container d-flex flex-column justify-content-end">
+  <mat-card-content class="m-0 aula-chat-container d-flex flex-column justify-content-end overflow-auto">
     <app-loading *ngIf="loading; else notLoading"></app-loading>
     <ng-template #notLoading>
-      <div class="my-1" *ngFor="let message of messages">
-        <div class="d-flex align-items-top p-2" [ngClass]="{'flex-row-reverse': sameSender(message)}">
+      <div class="aula-messages-container">
+        <div *ngFor="let message of messages" class="d-flex align-items-top my-1 p-2"
+          [ngClass]="{'flex-row-reverse': sameSender(message)}">
           <app-profile-photo class="mx-2" size="small" [photoURL]="message.photoURL"></app-profile-photo>
           <div class="flex-grow-1 rounded p-2"
             [ngClass]="{'bg-chat text-white ': !sameSender(message), 'bg-light': sameSender(message)}">

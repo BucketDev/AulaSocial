@@ -11,11 +11,11 @@
         <div class="mr-2">
           <app-profile-photo [photoURL]="user.photoURL"></app-profile-photo>
         </div>
-        <div class="mr-auto">
+        <div class="mr-auto aula-min-w-0">
           <span mat-line>{{user.displayName}}</span>
           <small mat-line class="text-muted">{{user.email}}</small>
         </div>
-        <button mat-raised-button [matMenuTriggerFor]="grantsMenu">
+        <button mat-raised-button [matMenuTriggerFor]="grantsMenu" class="aula-min-w-auto">
           <img src="https://png.icons8.com/color/administrative-tools/24" alt="grants"> Permisos
         </button>
         <mat-menu #grantsMenu="matMenu">

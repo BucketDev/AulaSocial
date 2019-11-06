@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ChatService } from 'src/app/providers/group/chat.service';
 import { GroupService } from 'src/app/providers/group/group.service';
@@ -11,12 +11,13 @@ import { Subscription } from 'rxjs';
   templateUrl: './group-chat.component.html',
   styleUrls: ['./group-chat.component.css']
 })
-export class GroupChatComponent implements OnDestroy {
+export class GroupChatComponent implements OnInit, OnDestroy {
   
   loading: boolean = true;
   formChat: FormGroup;
   messages: Message[];
   messageSub: Subscription;
+  @ViewChild("messagesContainer", { static: false }) messagesContainer: ElementRef;
 
   constructor(private chatService: ChatService,
               private groupService: GroupService,
@@ -30,7 +31,11 @@ export class GroupChatComponent implements OnDestroy {
       .subscribe((messages: Message[]) => {
         this.messages = messages;
         this.loading = false;
+        const element = document.querySelector('.aula-chat-container');
+        setTimeout(() => element.scrollTop = element.scrollHeight, 20)
       })
+  }
+  ngOnInit() {
   }
 
   ngOnDestroy() {

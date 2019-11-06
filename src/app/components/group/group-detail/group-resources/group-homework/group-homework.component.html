@@ -15,11 +15,11 @@
           <img src="https://png.icons8.com/color/ok--v2/20" alt="completed" *ngIf="homework.completed">
           <img src="https://png.icons8.com/color/bubble/20" alt="not completed" *ngIf="!homework.completed">
         </div>
-        <div matRipple (click)="showHomework(homework)" class="mr-auto">
+        <div matRipple (click)="showHomework(homework)" class="mr-auto aula-min-w-0">
           <span mat-line>{{homework.title}}</span>
           <small mat-line class="text-muted">Fecha de entrega {{homework.dueDate!.seconds * 1000 | date: 'longDate'}} </small>
         </div>
-        <button mat-raised-button color="accent" (click)="showFiles(homework)" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
+        <button mat-raised-button color="accent" (click)="showFiles(homework)" *ngIf="fireAuth.user.admin || fireAuth.user.professor" class="aula-min-w-auto">
           Ver archivos
         </button>
       </mat-list-item>

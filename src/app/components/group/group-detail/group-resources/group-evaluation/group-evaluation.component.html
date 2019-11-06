@@ -15,11 +15,11 @@
           <img src="https://png.icons8.com/color/ok--v2/20" alt="completed" *ngIf="evaluation.completed">
           <img src="https://png.icons8.com/color/bubble/20" alt="not completed" *ngIf="!evaluation.completed">
         </div>
-        <div matRipple (click)="showEvaluation(evaluation)" class="mr-auto">
+        <div matRipple (click)="showEvaluation(evaluation)" class="mr-auto aula-min-w-0">
           <span mat-line>{{evaluation.title}}</span>
           <small mat-line class="text-muted">Fecha de entrega {{evaluation.dueDate!.seconds * 1000 | date: 'longDate'}}</small>
         </div>
-        <button mat-raised-button color="accent" (click)="showResults(evaluation)" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
+        <button mat-raised-button color="accent" (click)="showResults(evaluation)" *ngIf="fireAuth.user.admin || fireAuth.user.professor" class="aula-min-w-auto">
           Ver resultados
         </button>
       </mat-list-item>

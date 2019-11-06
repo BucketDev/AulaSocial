@@ -11,11 +11,11 @@
           <span mat-line>No hay tareas por mostrar</span>
         </mat-list-item>
         <mat-list-item *ngFor="let homework of homeworks">
-          <div class="mr-auto">
+          <div class="mr-auto aula-min-w-0">
             <span mat-line>{{homework.title}}</span>
             <small mat-line>{{homework.description}}</small>
           </div>
-          <button mat-raised-button color="warn" (click)="deleteHomework(homework)">Eliminar</button>
+          <button mat-raised-button color="warn" (click)="deleteHomework(homework)" class="aula-min-w-auto">Eliminar</button>
         </mat-list-item>
       </mat-list>
     </mat-card-content>

@@ -14,11 +14,11 @@
         <div class="mr-3">
           <app-profile-photo [photoURL]="forum.photoURL" size="small"></app-profile-photo>
         </div>
-        <div class="mr-auto" style="min-width: 0;">
+        <div class="mr-auto aula-min-w-0">
           <span mat-line>{{forum.title}}</span>
           <small mat-line [innerHTML]="forum.description"></small>
         </div>
-        <button style="min-width: auto;" mat-raised-button color="warn" (click)="deleteForum(forum)">Eliminar</button>
+        <button mat-raised-button color="warn" (click)="deleteForum(forum)" class="aula-min-w-auto">Eliminar</button>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

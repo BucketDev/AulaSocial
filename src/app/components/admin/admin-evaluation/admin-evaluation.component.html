@@ -11,11 +11,11 @@
           <span mat-line>No hay evaluaciones por mostrar</span>
         </mat-list-item>
         <mat-list-item *ngFor="let evaluation of evaluations">
-          <div class="mr-auto">
+          <div class="mr-auto aula-min-w-0">
             <span mat-line>{{evaluation.title}}</span>
             <small mat-line>{{evaluation.description}}</small>
           </div>
-          <button mat-raised-button color="warn" (click)="deleteEvaluation(evaluation)">Eliminar</button>
+          <button mat-raised-button color="warn" (click)="deleteEvaluation(evaluation)" class="aula-min-w-auto">Eliminar</button>
         </mat-list-item>
       </mat-list>
     </mat-card-content>

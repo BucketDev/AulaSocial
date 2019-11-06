@@ -14,11 +14,11 @@
         <div class="mr-3">
           <app-profile-photo [photoURL]="group.photoURL" size="small"></app-profile-photo>
         </div>
-        <div class="mr-auto">
+        <div class="mr-auto aula-min-w-0">
           <span mat-line>{{group.title}}</span>
           <small mat-line>{{group.owner}}</small>
         </div>
-        <button mat-raised-button color="warn" (click)="deleteGroup(group)">Eliminar</button>
+        <button mat-raised-button color="warn" (click)="deleteGroup(group)" class="aula-min-w-auto">Eliminar</button>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

@@ -6,19 +6,19 @@
       <input matInput type="text" [(ngModel)]="upload.name" name="name" #name="ngModel" readonly>
     </mat-form-field>
     <button mat-stroked-button *ngIf="!upload?.file" type="button" (click)="fileInput.click()">
-      <img src="https://png.icons8.com/color/search/32" alt="search">
+      <img src="https://png.icons8.com/color/32/search.png" alt="search">
     </button>
     <div class="d-flex" *ngIf="upload?.file && !uploaded">
       <button mat-stroked-button type="button" [disabled]="uploading" (click)="deleteFile()">
-          <img src="https://png.icons8.com/color/delete-forever/32" alt="delete">
+          <img src="https://png.icons8.com/color/32/delete-forever.png" alt="delete">
       </button>
       <button mat-stroked-button type="button" (click)="uploadFile()" [disabled]="uploading">
-        <img src="https://png.icons8.com/color/upload-to-cloud/32" alt="upload" *ngIf="!uploading">
+        <img src="https://png.icons8.com/color/32/upload-to-cloud.png" alt="upload" *ngIf="!uploading">
         <span class="spinner-border text-primary" *ngIf="uploading"></span>
       </button>
     </div>
     <button mat-stroked-button type="button" *ngIf="uploaded">
-      <img src="https://png.icons8.com/color/ok--v2/32" alt="success">
+      <img src="https://png.icons8.com/color/32/ok--v2.png" alt="success">
     </button>
   </div>
 </div>

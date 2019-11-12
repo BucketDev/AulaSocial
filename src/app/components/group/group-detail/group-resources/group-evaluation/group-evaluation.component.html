@@ -1,6 +1,6 @@
 <mat-card class="p-0 my-2">
   <mat-card-header class="bg-evaluation p-2 text-white rounded-top">
-      <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/test-passed/40' | uriStyleSanitizer "></div>
+      <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/40/test-passed.png' | uriStyleSanitizer "></div>
     <mat-card-title>Evaluaciones</mat-card-title>
     <mat-card-subtitle>Crea y realiza tus evaluaciones</mat-card-subtitle>
   </mat-card-header>
@@ -12,8 +12,8 @@
       </mat-list-item>
       <mat-list-item *ngFor="let evaluation of evaluations">
         <div class="mr-2">
-          <img src="https://png.icons8.com/color/ok--v2/20" alt="completed" *ngIf="evaluation.completed">
-          <img src="https://png.icons8.com/color/bubble/20" alt="not completed" *ngIf="!evaluation.completed">
+          <img src="https://png.icons8.com/color/20/ok--v2.png" alt="completed" *ngIf="evaluation.completed">
+          <img src="https://png.icons8.com/color/20/bubble.png" alt="not completed" *ngIf="!evaluation.completed">
         </div>
         <div matRipple (click)="showEvaluation(evaluation)" class="mr-auto aula-min-w-0">
           <span mat-line>{{evaluation.title}}</span>

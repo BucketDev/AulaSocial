@@ -1,6 +1,6 @@
 <mat-card class="p-0 my-2">
   <mat-card-header class="bg-homework p-2 text-white rounded-top">
-    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/spiral-bound-booklet/40' | uriStyleSanitizer "></div>
+    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/40/spiral-bound-booklet.png' | uriStyleSanitizer "></div>
     <mat-card-title>Tareas</mat-card-title>
     <mat-card-subtitle>Almacena tus tareas</mat-card-subtitle>
   </mat-card-header>
@@ -12,8 +12,8 @@
       </mat-list-item>
       <mat-list-item *ngFor="let homework of homeworks">
         <div class="mr-2">
-          <img src="https://png.icons8.com/color/ok--v2/20" alt="completed" *ngIf="homework.completed">
-          <img src="https://png.icons8.com/color/bubble/20" alt="not completed" *ngIf="!homework.completed">
+          <img src="https://png.icons8.com/color/20/ok--v2.png" alt="completed" *ngIf="homework.completed">
+          <img src="https://png.icons8.com/color/20/bubble.png" alt="not completed" *ngIf="!homework.completed">
         </div>
         <div matRipple (click)="showHomework(homework)" class="mr-auto aula-min-w-0">
           <span mat-line>{{homework.title}}</span>

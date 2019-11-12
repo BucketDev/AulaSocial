@@ -10,7 +10,7 @@ export class PhotoPipe implements PipeTransform {
     size = size || 16;
     type = type || 'cotton';
     name = name || 'empty-box'
-    return value ? value : `https://png.icons8.com/${type}/${name}/${size}`
+    return value ? value : `https://png.icons8.com/${type}/${size}/${name}.png`
   }
 
 }

@@ -22,7 +22,7 @@ export class EventsComponent implements OnInit {
     setTimeout(this.getCalendarEvents, 1000);
   }
 
-  getCalendarURL = () => `https://png.icons8.com/color/calendar-${new Date().getDate()}/40`
+  getCalendarURL = () => `https://png.icons8.com/color/40/calendar-${new Date().getDate()}.png`
 
   getCalendarEvents = () => {
     this.loading = true;

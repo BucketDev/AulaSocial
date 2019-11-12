@@ -1,6 +1,6 @@
 <mat-card class="p-0 my-2">
   <mat-card-header class="p-2 bg-chat text-white rounded-top">
-    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/spiral-bound-booklet/40' | uriStyleSanitizer "></div>
+    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/40/spiral-bound-booklet.png' | uriStyleSanitizer "></div>
     <mat-card-title>Chat</mat-card-title>
     <mat-card-subtitle>Platica con tu profesor y compañeros</mat-card-subtitle>
   </mat-card-header>
@@ -28,7 +28,7 @@
           <textarea rows="2" matInput placeholder="Escribe tu mensaje" formControlName="message" required></textarea>
         </mat-form-field>
         <button mat-mini-fab color="default" class="m-2" [disabled]="formChat.invalid">
-          <img src="https://png.icons8.com/color/filled-sent/24" alt="send message">
+          <img src="https://png.icons8.com/color/24/filled-sent.png" alt="send message">
         </button>
       </div>
     </form>

@@ -10,8 +10,7 @@ import { LoginComponent } from './login.component';
   imports: [
     CommonModule,
     AngularMaterialModule,
-    MatToolbarModule,
-    
+    MatToolbarModule
   ],
   declarations: [
     LoginComponent

@@ -20,8 +20,8 @@
         <mat-card-title>Estudiantes</mat-card-title>
         <mat-card-subtitle *ngIf="groupService.students.length === 0">No hay estudiantes en este grupo</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
-        <mat-list>
+      <mat-card-content class="overflow-auto">
+        <mat-list class="aula-students-container">
           <mat-list-item *ngFor="let student of groupService.students">
             <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
             <div class="d-flex flex-column mx-2">

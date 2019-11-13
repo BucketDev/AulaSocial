@@ -8,8 +8,10 @@ export class UriStyleSanitizerPipe implements PipeTransform {
 
   constructor(private domSanitizer: DomSanitizer) {}
 
-  transform(uri: string): any {
-    return  this.domSanitizer.bypassSecurityTrustStyle(`url(${uri})`);
+  transform(uri: string, shadow: boolean = false): any {
+    return shadow ?
+      this.domSanitizer.bypassSecurityTrustStyle(`linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(10, 10, 10, 1.0)), url(${uri})`) :
+      this.domSanitizer.bypassSecurityTrustStyle(`url(${uri})`);
 
   }
 

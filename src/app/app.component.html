@@ -1,7 +1,12 @@
 <app-loading *ngIf="loading; else notLoading"></app-loading>
 <ng-template #notLoading>
-  <app-navbar *ngIf="showNavbar"></app-navbar>
-  <div class="container-fluid" [ngClass]="{'p-0': !showNavbar}">
-    <router-outlet></router-outlet>
+  <div class="d-flex flex-column h-100">
+    <app-navbar *ngIf="showNavbar"></app-navbar>
+    <div class="container-fluid flex-grow-1" [ngClass]="{'p-0': !showNavbar}">
+      <router-outlet></router-outlet>
+    </div>
+    <mat-toolbar color="default" class="text-break justify-content-end p-2 mat-toolbar-row-secondary">
+      <span><strong>Desarrollado por</strong><em> Allan Gael Razo Pérez, David Garcia Cano, Jennifer González Ortega, Alan Tadeo Vega Mendoza</em></span>
+    </mat-toolbar>
   </div>
 </ng-template>

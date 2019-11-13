@@ -23,7 +23,7 @@ export class AdminEvaluationComponent {
       this.loading = false;
       groups.forEach((group: Group) => 
         evaluationService.findAllAdminByGroupId(group.uid)
-          .subscribe((evaluations: Evaluation[]) => this.evaluations = evaluations)
+          .subscribe((evaluations: Evaluation[]) => this.evaluations.push(...evaluations))
       );
     });
   }

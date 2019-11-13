@@ -23,7 +23,7 @@ export class AdminHomeworkComponent implements OnInit, OnDestroy {
       this.loading = false;
       groups.forEach((group: Group) => 
         homeworkService.findAllAdminByGroupId(group.uid)
-          .subscribe((homeworks: Homework[]) => this.homeworks = homeworks)
+          .subscribe((homeworks: Homework[]) => this.homeworks.push(...homeworks))
       );
     });
   }

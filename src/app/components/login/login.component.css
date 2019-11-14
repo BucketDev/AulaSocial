@@ -1,0 +1,9 @@
+.aula-section-divider {
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+}
+
+.aula-section-img {
+  margin-top: -48px;
+}

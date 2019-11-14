@@ -30,7 +30,7 @@
           <div class="mr-3">
             <app-profile-photo size="small" [photoURL]="reply.photoURL"></app-profile-photo>
             <button mat-mini-fab class="aula-mini-fab-32 my-2" color="" [matBadge]="reply.claps" matBadgeOverlap="true"
-              [style.background-image]="'https://png.icons8.com/color/applause/32' | uriStyleSanitizer"
+              [style.background-image]="'https://png.icons8.com/color/32/applause.png' | uriStyleSanitizer"
               (click)="addClap(reply)">
             </button>
           </div>
@@ -54,7 +54,7 @@
             <mat-error *ngIf="formReply.get('description').errors">Este campo es requerido</mat-error>
           </mat-form-field>
           <button mat-mini-fab color="default" class="m-2" [disabled]="formReply.invalid">
-            <img src="https://png.icons8.com/color/filled-sent/24" alt="send message">
+            <img src="https://png.icons8.com/color/24/filled-sent.png" alt="send message">
           </button>
         </div>
       </form>

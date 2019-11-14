@@ -1,65 +1,188 @@
 <mat-toolbar color="default">
   <mat-toolbar-row>
-    <img src="https://png.icons8.com/cotton/school-1-1/32" alt="aula social logo">
+    <img src="https://png.icons8.com/cotton/32/school-1-1.png" alt="aula social logo">
     <span class="mr-auto aula-social-font">Aula Social</span>
     <button mat-raised-button (click)="signIn()">
-      <img src="https://png.icons8.com/color/16/google-logo" alt="google logo"> Inicia sesión
+      <img src="https://png.icons8.com/color/16/google-logo.png" alt="google logo"> Inicia sesión
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-<header class="masthead">
-  <div class="container h-100">
-    <div class="row h-100 align-items-center">
-      <div class="col-12 text-center">
-        <h1 class="font-weight-light">Aula Social</h1>
-        <p class="lead">Mejora tus calificiaciones </p>
-      </div>
-    </div>
+<div class="row m-0 aula-section-divider flex-column align-items-start justify-content-end text-white p-4"
+  [style.background-image]="'https://fotos.subefotos.com/832448696cbaff0c76433258e0715483o.jpg' | uriStyleSanitizer: true">
+  <span class="h3 aula-social-font">Aula Social</span>
+  <p class="m-0">Lleva la escuela a donde vayas</p>
+</div>
+<p class="aula-social-font h1 text-center my-3">¿Qué es?</p>
+<mat-divider></mat-divider>
+<div class="row m-0 mt-4 justify-content-center">
+  <div class="col-12 col-md-5 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-primary text-white">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/cotton/64/school-1-1.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Aula Social</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Es una herramienta 100% web que ayuda a profesores y alumnos en extender la comunicación que existe en el salón y poderla llevar <em>a donde quiera que estés</em></p>
+      </mat-card-content>
+    </mat-card>
   </div>
-</header>
-<!-- Contenido de la pagina -->
-<section class="py-5" >
-  <div class="container">
-    <h2 class="font-weight-light" color>Sube y resuelve tareas</h2>
-    <p>El estudio es el desarrollo de aptitudes y habilidades mediante la incorporación de conocimientos nuevos. El sistema de educación mediante el cual se produce la socialización de la persona tiene como correlato que se dedique una elevada cantidad de horas al análisis de diversos temas. </p>
+</div>
+<p class="aula-social-font h1 text-center my-3">¿Cómo funciona?</p>
+<mat-divider></mat-divider>
+<div class="row m-0 mt-4 justify-content-center">
+  <div class="col-12 col-md-6 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-dark text-white">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://img.icons8.com/color/64/commercial-development-management.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Roles</span>
+      </mat-card-header>
+      <img mat-card-image src="assets/img/landing/roles.jpg" alt="role photo">
+      <mat-card-content>
+        <p class="text-center">Administra los permisos de tus usuarios en 3 básicos roles: <strong>Administrador, Profesor y Alumno</strong></p>
+      </mat-card-content>
+    </mat-card>
   </div>
-</section>
-<!--Tarjetas-->
-<div class="container-fluid  bg-dark ">
-  <div class="container py-5">
-    <div class="row">
-      <!-- Tarjeta 1 -->
-      <div class="col-md-4 bg-dark">
-          <div class="card text-center"> 
-              <div class="card-block ">
-                <h5 class="card-title" >Maestro</h5>
-                <img src="https://img.icons8.com/color/96/000000/teacher.png">
-                <p class="card-text">Sube tareas a tus alumnos y manten un orden en tus clases.</p>
-                <a href="#" class="btn btn-dark">Go somewhere</a>
-              </div>
-          </div>        
-      </div><!-- tarjeta 1 -->
-      <!-- Tarjeta 1 -->
-      <div class="col-md-4">
-          <div class="card text-center"> 
-              <div class="card-block">
-                <h5 class="card-title">Alumno</h5>
-                <img src="https://img.icons8.com/color/96/000000/student-male--v2.png">
-                <p class="card-text">Sube tareas a tus alumnos y manten un orden en tus clases.</p>
-                <a href="#" class="btn btn-dark">Go somewhere</a>
-              </div>
-          </div>       
-      </div><!-- tarjeta 1 --> 
-      <div class="col-md-4">
-          <div class="card text-center"> 
-              <div class="card-block">
-                <h5 class="card-title">Institucion</h5>
-                <img src="https://img.icons8.com/color/96/000000/school-building.png">
-                <p class="card-text">Sube tareas a tus alumnos y manten un orden en tus clases.</p>
-                <a href="#" class="btn btn-dark">Go somewhere</a>
-              </div>
-          </div>       
-      </div><!-- tarjeta 1 -->    
-    </div>
+  <div class="col-12 col-md-6 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-dark text-white">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://img.icons8.com/color/64/classroom.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Grupos</span>
+      </mat-card-header>
+      <img mat-card-image src="assets/img/landing/gruops.jpg" alt="role photo">
+      <mat-card-content>
+        <p class="text-center">Como profesor tienes la capacidad de crear grupos dedicados a tu materia, donde puedes administrar tus recursos como: <strong>evaluaciones, tareas, foros y chat</strong></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<p class="aula-social-font h1 text-center my-3">Recursos</p>
+<mat-divider></mat-divider>
+<div class="row m-0 mt-4 justify-content-center">
+  <div class="col-6 col-md-3 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-dark text-white">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/spiral-bound-booklet.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Tareas</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Como profesor, crea tareas y asignales una fecha de entrega para los alumnos del grupo</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-3 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-dark text-white">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/test-passed.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Evaluaciones</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Crea evaluaciones para los estuduantes del grupo, de opción múltiple, sin límite de preguntas y respuestas</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-3 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-dark text-white">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/communication.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Foros</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Los alumnos pueden crear foros de discusión para aclarar las dudas acerca de un tema</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-3 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-dark text-white">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://img.icons8.com/color/64/chat.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Chat</span>
+      </mat-card-header>  
+      <mat-card-content>
+        <p class="text-center">Hay un chat general para el grupo donde profesor y alumnos pueden comunicarse en tiempo real</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<p class="aula-social-font h1 text-center my-3">Acerca de Aula Social</p>
+<mat-divider></mat-divider>
+<div class="row m-0 mt-4 justify-content-center">
+  <div class="col-6 col-md-4 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-secondary">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/shield.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Seguro</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Crea, edita y elimina con base a tus permisos, la asignación de roles permite un correcto control de los recursos</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-4 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-secondary">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/time-machine--v3.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Al instante</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Obten respuestas en tiempo real, no necesitas recargar la página, <strong>TODO</strong>, desde el chat hasta las tareas se actualizan de inmediato</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-4 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-secondary">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/icons8-new-logo.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Icons8</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center"><a href="https://icons8.com" class="text-decoration-none text-white">Iconografía de uso libre</a>, con una amplia variedad de estilos, <strong>Aula social</strong> es personalizable sin exceder en costos</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-4 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-secondary">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/material-ui.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Material UI</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Interfaces atractivas a la vista, adiós a las herramientas anticuadas</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-4 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-secondary">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/firebase.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Firebase</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Todo el poder y experiencia de Google en un solo lugar, con Firebase, <strong>Aula Social</strong> es segura y rápida</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-6 col-md-4 my-3 d-flex flex-column">
+    <mat-card class="flex-fill bg-secondary">
+      <mat-card-header class="d-flex flex-column align-items-center">
+        <div class="aula-cover-64 aula-section-img"
+          [style.background-image]="'https://png.icons8.com/color/64/google-calendar.png' | uriStyleSanitizer"></div>
+        <span class="h4 text-center">Calendario</span>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center">Todas las tareas y evaluaciones van directo a tu calendario para que no olvides cuando tienes que entregar tus trabajos</p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

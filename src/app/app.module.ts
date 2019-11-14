@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { AngularMaterialModule } from './components/material/angular-material.module';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -41,6 +42,7 @@ registerLocaleData(localeMX, 'es-MX');
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireFunctionsModule,
     AngularFireMessagingModule,
+    AngularMaterialModule,
     SharedModule,
     LoginModule,
     DashboardModule,

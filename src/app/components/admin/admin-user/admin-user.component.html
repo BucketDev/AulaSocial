@@ -1,6 +1,6 @@
 <mat-card class="p-0">
   <mat-card-header class="bg-admin p-2 text-white rounded-top">
-    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/admin-settings-male/40' | uriStyleSanitizer "></div>
+    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/40/admin-settings-male.png' | uriStyleSanitizer "></div>
     <mat-card-title>Usuarios</mat-card-title>
     <mat-card-subtitle>Administra los roles para cada usuario</mat-card-subtitle>
   </mat-card-header>
@@ -16,17 +16,17 @@
           <small mat-line class="text-muted">{{user.email}}</small>
         </div>
         <button mat-raised-button [matMenuTriggerFor]="grantsMenu" class="aula-min-w-auto">
-          <img src="https://png.icons8.com/color/administrative-tools/24" alt="grants"> Permisos
+          <img src="https://png.icons8.com/color/24/administrative-tools.png" alt="grants"> Permisos
         </button>
         <mat-menu #grantsMenu="matMenu">
           <button mat-menu-item (click)="addAdmin(user)">
-            <img src="https://png.icons8.com/color/businessman/24" alt="admin"> Administrador
+            <img src="https://png.icons8.com/color/24/businessman.png" alt="admin"> Administrador
           </button>
           <button mat-menu-item (click)="addProfessor(user)">
-            <img src="https://png.icons8.com/color/teacher/24" alt="professor"> Profesor
+            <img src="https://png.icons8.com/color/24/teacher.png" alt="professor"> Profesor
           </button>
           <button mat-menu-item (click)="removeProfessor(user)">
-            <img src="https://png.icons8.com/color/student-male--v2/24" alt="student"> Alumno
+            <img src="https://png.icons8.com/color/24/student-male--v2.png" alt="student"> Alumno
           </button>
         </mat-menu>
         <mat-divider *ngIf="idx < users.length - 1"></mat-divider>

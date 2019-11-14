@@ -21,7 +21,7 @@ export class AdminForumComponent {
       this.loading = false;
       groups.forEach((group: Group) => 
         forumService.findAllAdminByGroupId(group.uid)
-          .subscribe((forums: Forum[]) => this.forums = forums)
+          .subscribe((forums: Forum[]) => this.forums.push(...forums))
       );
     });
   }

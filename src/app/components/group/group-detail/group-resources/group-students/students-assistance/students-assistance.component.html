@@ -1,0 +1,37 @@
+<div class="row my-2 mx-0">
+  <button mat-raised-button color="accent" [routerLink]="['/group', groupService.groupId]">Regresar</button>
+</div>
+<mat-card class="p-0">
+  <mat-card-header class="bg-student p-2 text-white rounded-top">
+    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/40/reading-ebook.png' | uriStyleSanitizer "></div>
+    <mat-card-title>Asistencia</mat-card-title>
+    <mat-card-subtitle>Verifica la asistencia de los estudiantes</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="m-0">
+    <app-loading *ngIf="loading"></app-loading>
+    <div class="table-responsive" *ngIf="!loading">
+      <table class="table table-striped m-0">
+        <thead class="thead-dark">
+        <tr class="text-center">
+          <th class="aula-col-student">Estudiante</th>
+          <th class="aula-col-date" *ngFor="let assistance of assists">{{assistance.date.toDate() | date: 'EEEE, dd MMMM yyyy'}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let student of groupService.students">
+          <td class="d-flex align-items-center p-1">
+            <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
+            <div class="d-flex flex-column mx-2">
+              <span>{{student.displayName}}</span>
+              <small class="text-muted">{{student.email}}</small>
+            </div>
+          </td>
+          <td *ngFor="let assistance of assists" class="text-center">
+            <mat-checkbox [checked]="hasAssistance(student, assistance.students)" disabled="true"></mat-checkbox>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

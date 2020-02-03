@@ -9,6 +9,8 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
 import { SharedPipeModule } from 'src/app/pipes/shared-pipe.module';
 import { GroupChatComponent } from './group-chat/group-chat.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {GroupStudentsModule} from './group-students/group-students.module';
+import {GroupStudentsComponent} from './group-students/group-students.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     SharedPipeModule,
     GroupHomeworkModule,
     GroupEvaluationModule,
-    GroupForumModule
+    GroupForumModule,
+    GroupStudentsModule
   ],
   declarations: [
     GroupResourcesComponent,
@@ -28,7 +31,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ],
   exports: [
     GroupResourcesComponent,
-    GroupChatComponent
+    GroupChatComponent,
+    GroupStudentsComponent
   ]
 })
 export class GroupResourcesModule { }

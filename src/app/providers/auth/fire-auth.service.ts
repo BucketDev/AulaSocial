@@ -11,7 +11,7 @@ declare var gapi: any;
   providedIn: 'root'
 })
 export class FireAuthService {
-  
+
   user: User;
   $userRetrieved = new ReplaySubject<boolean>(1);
   isNewUser: boolean = false;

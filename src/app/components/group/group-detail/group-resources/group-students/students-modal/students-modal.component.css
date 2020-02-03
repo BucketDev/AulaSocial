@@ -1,0 +1,12 @@
+mat-checkbox {
+  height: 16px;
+}
+
+:host ::ng-deep .mat-card-header-text {
+  margin: 0;
+}
+
+.aula-students-container {
+  height: 350px;
+  min-height: 350px;
+}

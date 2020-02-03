@@ -15,24 +15,10 @@
         </div>
       </mat-card-content>
     </mat-card>
-    <mat-card class="mt-2" *ngIf="hasJoined || fireAuth.user.admin || fireAuth.user.professor">
-      <mat-card-header>
-        <mat-card-title>Estudiantes</mat-card-title>
-        <mat-card-subtitle *ngIf="groupService.students.length === 0">No hay estudiantes en este grupo</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="overflow-auto">
-        <mat-list class="aula-students-container">
-          <mat-list-item *ngFor="let student of groupService.students">
-            <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
-            <div class="d-flex flex-column mx-2">
-              <span>{{student.displayName}}</span>
-              <small class="text-muted">{{student.email}}</small>
-            </div>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-    <app-group-chat></app-group-chat>
+    <div *ngIf="hasJoined || fireAuth.user.admin || fireAuth.user.professor">
+      <app-group-students></app-group-students>
+      <app-group-chat></app-group-chat>
+    </div>
   </div>
   <div class="col-12 col-lg-8" *ngIf="hasJoined || fireAuth.user.admin || fireAuth.user.professor">
       <router-outlet></router-outlet>

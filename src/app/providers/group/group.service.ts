@@ -12,7 +12,7 @@ import { Student } from 'src/app/models/student.interface';
 })
 export class GroupService {
 
-  private collectionName: string = '/groups'
+  private collectionName = '/groups';
   groupId: string;
   students: Student[];
 
@@ -21,7 +21,7 @@ export class GroupService {
 
   save = (group: Group) => this.db.collection(this.collectionName).add({
     owner: this.fireAuth.user.displayName, photoURL: this.fireAuth.user.photoURL,  ...group, creationDate: new Date()
-  }); 
+  });
 
   findAll = () => this.db.collection(this.collectionName).snapshotChanges().pipe(map((actions: DocumentChangeAction<Group>[]) =>
     actions.map((action: DocumentChangeAction<Group>) => {

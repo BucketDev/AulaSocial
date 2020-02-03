@@ -1,0 +1,23 @@
+<mat-card class="mt-2 p-0">
+  <mat-card-header class="p-2 bg-student text-white rounded-top">
+    <div mat-card-avatar [style.background-image]="'https://png.icons8.com/color/40/reading-ebook.png' | uriStyleSanitizer "></div>
+    <mat-card-title>Estudiantes</mat-card-title>
+    <mat-card-subtitle *ngIf="groupService.students.length === 0">No hay estudiantes en este grupo</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="groupService.students.length > 0">Lista de estudiantes en este grupo</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="overflow-auto">
+    <mat-list class="aula-students-container">
+      <mat-list-item *ngFor="let student of groupService.students">
+        <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
+        <div class="d-flex flex-column mx-2">
+          <span>{{student.displayName}}</span>
+          <small class="text-muted">{{student.email}}</small>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions class="bg-light p-3 m-0 rounded-bottom" *ngIf="fireAuth.user.admin || fireAuth.user.professor">
+    <button mat-raised-button color="primary" (click)="showRegisterAssistance()">Registrar asistencia</button>
+    <button mat-raised-button color="accent" routerLink="assistance">Ver asistencia</button>
+  </mat-card-actions>
+</mat-card>

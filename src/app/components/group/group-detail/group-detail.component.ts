@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { GroupService } from 'src/app/providers/group/group.service';
@@ -17,33 +17,30 @@ import { UserService } from 'src/app/providers/user/user.service';
   styleUrls: ['./group-detail.component.css']
 })
 export class GroupDetailComponent implements OnDestroy {
-  
+
   group: Group;
+  students: Student[];
   groupSub: Subscription;
   studentSub: Subscription;
-  hasJoined: boolean = false;
-  loading: boolean = true;
-  
+  hasJoined = false;
+  loading = true;
+
   constructor(private activatedRoute: ActivatedRoute,
               public groupService: GroupService,
               public userService: UserService,
               private studentService: StudentService,
               public fireAuth: FireAuthService,
               private snackBar: MatSnackBar) {
-    this.activatedRoute.params.subscribe(params => {
-      this.groupService.groupId = params['uid'];
-      groupService.findByGroupId(params['uid'])
-        .toPromise().then((group: Group) => {
-          this.group = group;
-        })
-        .then(() => {
-          this.studentSub = this.studentService.findAll(params['uid'])
-            .subscribe((students: Student[]) =>  {
-              this.groupService.students = students;
-              this.hasJoined = students.find((student: Student) => student.uid === fireAuth.user.uid) ? true : false;
-              this.loading = false;
-            });
-        })
+    const { uid } = this.activatedRoute.snapshot.params;
+    groupService.groupId = uid;
+    this.groupSub = groupService.findByGroupId(uid).subscribe((group: Group) => {
+      this.group = group;
+      this.studentSub = this.studentService.findAll(uid)
+        .subscribe((students: Student[]) =>  {
+          this.hasJoined = !!students.find((student: Student) => student.uid === fireAuth.user.uid);
+          this.groupService.students = students;
+          this.loading = false;
+        });
     });
   }
 
@@ -53,7 +50,7 @@ export class GroupDetailComponent implements OnDestroy {
         this.userService.addGroup({uid: this.groupService.groupId, ...this.group});
       })
       .then(() => {
-        let ref = this.snackBar.open(`Te has unido al grupo ${this.group.title}`, 'Cancelar', {
+        const ref = this.snackBar.open(`Te has unido al grupo ${this.group.title}`, 'Cancelar', {
           duration: 5000
         });
         ref.onAction().subscribe(this.removeStudent);
@@ -66,9 +63,10 @@ export class GroupDetailComponent implements OnDestroy {
     })
     .then(() => this.snackBar.open(`Has abandonado el grupo ${this.group.title}`, '', {
       duration: 5000
-    }));
-    
+    }))
+
   ngOnDestroy(): void {
     this.studentSub.unsubscribe();
+    this.groupSub.unsubscribe();
   }
 }

@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { GroupDetailComponent } from './group-detail.component';
 import { RouterModule } from '@angular/router';
 import { GroupResourcesModule } from './group-resources/group-resources.module';
+import {GroupStudentsModule} from './group-resources/group-students/group-students.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { GroupResourcesModule } from './group-resources/group-resources.module';
     AngularMaterialModule,
     SharedPipeModule,
     SharedModule,
-    GroupResourcesModule
+    GroupResourcesModule,
+    GroupStudentsModule
   ],
   declarations: [
     GroupDetailComponent

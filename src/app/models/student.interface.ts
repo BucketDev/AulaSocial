@@ -1,6 +1,8 @@
 export interface Student {
-  uid: string,
-  photoURL: string,
+  uid: string;
+  photoURL: string;
+  displayName: string;
   email: string;
-  joinedAt?: Date
+  joinedAt?: Date;
+  assistance: number;
 }

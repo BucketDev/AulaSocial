@@ -17,7 +17,7 @@
         </div>
         <div matRipple (click)="showHomework(homework)" class="mr-auto aula-min-w-0">
           <span mat-line>{{homework.title}}</span>
-          <small mat-line class="text-muted">Fecha de entrega {{homework.dueDate!.seconds * 1000 | date: 'longDate'}} </small>
+          <small mat-line class="text-muted">Fecha de entrega {{homework.dueDate.toDate() | date: 'longDate'}} </small>
         </div>
         <button mat-raised-button color="accent" (click)="showFiles(homework)" *ngIf="fireAuth.user.admin || fireAuth.user.professor" class="aula-min-w-auto">
           Ver archivos

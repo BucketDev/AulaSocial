@@ -48,6 +48,10 @@ service cloud.firestore {
       match /chat/{document=**} {
         allow read, create: if request.auth.uid != null;
       }
+      match /assistance/{document=**} {
+        allow read, write: if request.auth.token.professor || request.auth.token.admin;
+        allow delete: if request.auth.token.admin;
+      }
     }
   }
 }

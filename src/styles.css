@@ -14,7 +14,7 @@ body { margin: 0; }
 *.aula-social-font {
   font-family: 'Graduate', cursive !important;
 }
-  
+
 button:focus,
 select:focus,
 .btn:focus {
@@ -25,44 +25,56 @@ select:focus,
   cursor: pointer;
 }
 
-.bg-evaluation {
-  background-color: #34ace0;
-}
-
-.text-evaluation {
-  color: #34ace0;
+.mat-card-subtitle {
+  color: inherit;
 }
 
 .bg-homework {
-  background-color: #706fd3;
+  background-color: #3f51b5;
 }
 
 .text-homework {
-  color: #706fd3;
+  color: #3f51b5;
+}
+
+.bg-student {
+  background-color: #3f51b5;
+}
+
+.text-student {
+  color: #3f51b5;
+}
+
+.bg-evaluation {
+  background-color: #3f51b5;
+}
+
+.text-evaluation {
+  color: #3f51b5;
 }
 
 .bg-forum {
-  background-color: #ff793f;
+  background-color: #3f51b5;
 }
 
 .text-forum {
-  color: #ff793f;
-}
-
-.bg-admin {
-  background-color: #33d9b2;
-}
-
-.text-admin {
-  color: #33d9b2;
+  color: #3f51b5;
 }
 
 .bg-chat {
-  background-color: #ff5252;
+  background-color: #3f51b5;
 }
 
 .text-chat {
-  color: #ff5252;
+  color: #3f51b5;
+}
+
+.bg-admin {
+  background-color: #3f51b5;
+}
+
+.text-admin {
+  color: #3f51b5;
 }
 
 .aula-min-w-0 {
@@ -111,6 +123,7 @@ select:focus,
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: #FFF;

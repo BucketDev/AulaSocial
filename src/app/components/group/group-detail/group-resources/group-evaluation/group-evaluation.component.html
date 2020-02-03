@@ -17,7 +17,7 @@
         </div>
         <div matRipple (click)="showEvaluation(evaluation)" class="mr-auto aula-min-w-0">
           <span mat-line>{{evaluation.title}}</span>
-          <small mat-line class="text-muted">Fecha de entrega {{evaluation.dueDate!.seconds * 1000 | date: 'longDate'}}</small>
+          <small mat-line class="text-muted">Fecha de entrega {{evaluation.dueDate.toDate() | date: 'longDate'}}</small>
         </div>
         <button mat-raised-button color="accent" (click)="showResults(evaluation)" *ngIf="fireAuth.user.admin || fireAuth.user.professor" class="aula-min-w-auto">
           Ver resultados

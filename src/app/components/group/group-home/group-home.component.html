@@ -30,7 +30,7 @@
           <p [innerHTML]="group.description"></p>
         </mat-card-content>
         <mat-card-footer class="p-2 text-center bg-light">
-          <small>Creado el {{group.creationDate!.seconds * 1000 | date: 'longDate'}}</small>
+          <small>Creado el {{group.creationDate.toDate() | date: 'longDate'}}</small>
         </mat-card-footer>
       </mat-card>
     </div>

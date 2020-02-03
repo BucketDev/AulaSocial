@@ -1,0 +1,18 @@
+th {
+  padding: .25rem!important;
+}
+
+.table td {
+  padding: 0;
+  vertical-align: middle;
+}
+
+.aula-col-student {
+  width: 200px;
+  min-width: 200px;
+}
+
+.aula-col-date {
+  width: 135px;
+  min-width: 135px;
+}

@@ -1,0 +1,27 @@
+<mat-card class="p-0 mat-elevation-z0">
+  <mat-card-header>
+    <mat-form-field appearance="outline" class="w-100 p-1">
+      <mat-label>Fecha de asistencia</mat-label>
+      <input matInput [matDatepicker]="myDatepicker" required [(ngModel)]="assistanceDate">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+  </mat-card-header>
+  <mat-card-content class="overflow-auto">
+    <mat-list class="aula-students-container">
+      <mat-list-item *ngFor="let student of groupService.students">
+        <app-profile-photo [photoURL]="student.photoURL" size="small"></app-profile-photo>
+        <div class="d-flex justify-content-between w-100 align-items-center">
+          <div class="d-flex flex-column mx-2">
+            <span>{{student.displayName}}</span>
+            <small class="text-muted">{{student.email}}</small>
+          </div>
+          <mat-checkbox (change)="selectStudent($event, student)"></mat-checkbox>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions class="bg-light p-3 m-0 rounded-bottom">
+    <button mat-stroked-button color="primary" (click)="saveAssistance()" [disabled]="!assistanceDate">Guardar</button>
+  </mat-card-actions>
+</mat-card>
